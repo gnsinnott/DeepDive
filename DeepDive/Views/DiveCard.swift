@@ -43,9 +43,10 @@ struct DiveCard: View {
     }
 }
 
-//#Preview {
-//    MainActor.assumeIsolated {
-//    DiveCard()
-//        .modelContainer(previewContainer)
-//    }
-//}
+#Preview {
+    MainActor.assumeIsolated {
+        let container = previewContainer
+           return DiveCard(dive: Dive.preview)
+                .modelContainer(container)
+    }
+}

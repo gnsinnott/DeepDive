@@ -18,6 +18,7 @@ class Dive {
     var depth: Int
     var longitude: Double
     var latitude: Double
+    var unit: Bool
     
     init(name: String, depth: Int){
         self.id = UUID()
@@ -25,7 +26,14 @@ class Dive {
         self.date = Date()
         self.duration = 38
         self.depth = depth
+        self.unit = false // false/0 = meters, true/1 = feet
     }
 }
 
 extension Dive: Identifiable { }
+
+extension Dive {
+    static var preview: Dive {
+        Dive(name: "Test Dive", depth: 12)
+    }
+}
