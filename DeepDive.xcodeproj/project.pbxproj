@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		720F66492A3909BC001B6446 /* SampleDives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F66482A3909BC001B6446 /* SampleDives.swift */; };
+		720F664F2A3A2450001B6446 /* DiveDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F664E2A3A2450001B6446 /* DiveDetail.swift */; };
 		724608032A338A03005EAC46 /* DeepDiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608022A338A03005EAC46 /* DeepDiveApp.swift */; };
 		724608052A338A03005EAC46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608042A338A03005EAC46 /* ContentView.swift */; };
 		724608072A338A04005EAC46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 724608062A338A04005EAC46 /* Assets.xcassets */; };
@@ -15,6 +17,9 @@
 		724608182A338A04005EAC46 /* DeepDiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608172A338A04005EAC46 /* DeepDiveTests.swift */; };
 		724608222A338A04005EAC46 /* DeepDiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608212A338A04005EAC46 /* DeepDiveUITests.swift */; };
 		724608242A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608232A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift */; };
+		724608312A338A18005EAC46 /* Dive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608302A338A18005EAC46 /* Dive.swift */; };
+		724608332A338C95005EAC46 /* DiveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608322A338C95005EAC46 /* DiveCard.swift */; };
+		72D6D9B42A38D9BD00482547 /* PreviewSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D6D9B32A38D9BD00482547 /* PreviewSampleData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		720F66482A3909BC001B6446 /* SampleDives.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleDives.swift; sourceTree = "<group>"; };
+		720F664E2A3A2450001B6446 /* DiveDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveDetail.swift; sourceTree = "<group>"; };
 		724607FF2A338A03005EAC46 /* DeepDive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepDive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		724608022A338A03005EAC46 /* DeepDiveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDiveApp.swift; sourceTree = "<group>"; };
 		724608042A338A03005EAC46 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +55,9 @@
 		7246081D2A338A04005EAC46 /* DeepDiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DeepDiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		724608212A338A04005EAC46 /* DeepDiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDiveUITests.swift; sourceTree = "<group>"; };
 		724608232A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDiveUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		724608302A338A18005EAC46 /* Dive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dive.swift; sourceTree = "<group>"; };
+		724608322A338C95005EAC46 /* DiveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCard.swift; sourceTree = "<group>"; };
+		72D6D9B32A38D9BD00482547 /* PreviewSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSampleData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,10 +108,11 @@
 		724608012A338A03005EAC46 /* DeepDive */ = {
 			isa = PBXGroup;
 			children = (
+				72D6D9B62A38DADD00482547 /* Views */,
+				72D6D9B52A38D9C400482547 /* Support */,
+				72F4EA422A38D52400A3C075 /* Model */,
 				724608022A338A03005EAC46 /* DeepDiveApp.swift */,
-				724608042A338A03005EAC46 /* ContentView.swift */,
 				724608062A338A04005EAC46 /* Assets.xcassets */,
-				7246080B2A338A04005EAC46 /* Item.swift */,
 				7246080D2A338A04005EAC46 /* DeepDive.entitlements */,
 				7246080E2A338A04005EAC46 /* Info.plist */,
 				724608082A338A04005EAC46 /* Preview Content */,
@@ -132,6 +143,34 @@
 				724608232A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift */,
 			);
 			path = DeepDiveUITests;
+			sourceTree = "<group>";
+		};
+		72D6D9B52A38D9C400482547 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				72D6D9B32A38D9BD00482547 /* PreviewSampleData.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		72D6D9B62A38DADD00482547 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				724608042A338A03005EAC46 /* ContentView.swift */,
+				720F664E2A3A2450001B6446 /* DiveDetail.swift */,
+				724608322A338C95005EAC46 /* DiveCard.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		72F4EA422A38D52400A3C075 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				720F66482A3909BC001B6446 /* SampleDives.swift */,
+				7246080B2A338A04005EAC46 /* Item.swift */,
+				724608302A338A18005EAC46 /* Dive.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,8 +303,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				720F66492A3909BC001B6446 /* SampleDives.swift in Sources */,
+				724608332A338C95005EAC46 /* DiveCard.swift in Sources */,
 				724608052A338A03005EAC46 /* ContentView.swift in Sources */,
+				724608312A338A18005EAC46 /* Dive.swift in Sources */,
+				72D6D9B42A38D9BD00482547 /* PreviewSampleData.swift in Sources */,
 				7246080C2A338A04005EAC46 /* Item.swift in Sources */,
+				720F664F2A3A2450001B6446 /* DiveDetail.swift in Sources */,
 				724608032A338A03005EAC46 /* DeepDiveApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,6 +479,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DeepDive/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -466,6 +511,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DeepDive/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
