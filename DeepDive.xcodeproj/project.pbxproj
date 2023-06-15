@@ -19,6 +19,7 @@
 		724608242A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608232A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift */; };
 		724608312A338A18005EAC46 /* Dive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608302A338A18005EAC46 /* Dive.swift */; };
 		724608332A338C95005EAC46 /* DiveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608322A338C95005EAC46 /* DiveCard.swift */; };
+		72AEFCE82A3B9EC200DEA260 /* NewDiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AEFCE72A3B9EC200DEA260 /* NewDiveView.swift */; };
 		72D6D9B42A38D9BD00482547 /* PreviewSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D6D9B32A38D9BD00482547 /* PreviewSampleData.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		724608232A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDiveUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		724608302A338A18005EAC46 /* Dive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dive.swift; sourceTree = "<group>"; };
 		724608322A338C95005EAC46 /* DiveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCard.swift; sourceTree = "<group>"; };
+		72AEFCE72A3B9EC200DEA260 /* NewDiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDiveView.swift; sourceTree = "<group>"; };
 		72D6D9B32A38D9BD00482547 /* PreviewSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSampleData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 			children = (
 				724608042A338A03005EAC46 /* ContentView.swift */,
 				720F664E2A3A2450001B6446 /* UpdateDiveView.swift */,
+				72AEFCE72A3B9EC200DEA260 /* NewDiveView.swift */,
 				724608322A338C95005EAC46 /* DiveCard.swift */,
 			);
 			path = Views;
@@ -310,6 +313,7 @@
 				72D6D9B42A38D9BD00482547 /* PreviewSampleData.swift in Sources */,
 				7246080C2A338A04005EAC46 /* Item.swift in Sources */,
 				720F664F2A3A2450001B6446 /* UpdateDiveView.swift in Sources */,
+				72AEFCE82A3B9EC200DEA260 /* NewDiveView.swift in Sources */,
 				724608032A338A03005EAC46 /* DeepDiveApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

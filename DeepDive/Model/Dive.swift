@@ -7,15 +7,16 @@
 
 import Foundation
 import SwiftData
+import CoreLocation
 
 @Model
 class Dive {
     var id: UUID
     var name: String
     var date: Date
-    var timeIn: Date
     var duration: Int
     var depth: Int
+//    var location: CLLocationCoordinate2D
     var longitude: Double
     var latitude: Double
     var unit: Bool
@@ -26,6 +27,8 @@ class Dive {
         self.date = Date()
         self.duration = 38
         self.depth = depth
+        self.longitude = 0.0
+        self.latitude = 0.0
         self.unit = false // false/0 = meters, true/1 = feet
     }
 }

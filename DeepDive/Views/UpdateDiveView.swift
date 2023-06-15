@@ -14,13 +14,22 @@ struct UpdateDiveView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var name: String = ""
+    @State private var date = Date()
     @State private var depth: Int = 0
     @State private var units = 0
+    
     var body: some View {
         NavigationStack {
             Form{
-                Section(header: Text("Dive name")){
+                Section(header: Text("Dive name")) {
                     TextField(dive.name.isEmpty ? "Enter dive name here..." : dive.name, text: $name)
+                }
+                Section(header: Text("Dive date")) {
+                    DatePicker(
+                    "Dive Date",
+                    selection: $date,
+                    displayedComponents: [.date]
+                    )
                 }
                 Section(header: Text("Dive Details")) {
                     HStack {
@@ -48,6 +57,7 @@ struct UpdateDiveView: View {
         }
         .onAppear{
             depth = dive.depth
+            date = dive.date
         }
     }
     private func updateDive() {
@@ -56,6 +66,7 @@ struct UpdateDiveView: View {
             dive.name = name
         }
         dive.depth = depth
+        dive.date = date
     }
 }
 

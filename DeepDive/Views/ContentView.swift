@@ -42,7 +42,9 @@ struct diveList: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading){
-                    Label("Add Dive", systemImage: "plus")
+                    NavigationLink(destination: NewDiveView()) {
+                        Label("Add Dive", systemImage: "plus")
+                    }
                 }
             }
         }
