@@ -11,6 +11,7 @@ import MapKit
 
 struct NewDiveView: View {
     
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
     @State private var name: String = ""
@@ -83,12 +84,8 @@ struct NewDiveView: View {
         }
     }
     private func newDive() {
-        var dive = Dive(name: name, depth: depth)
-//        dive.name = name
-        dive.date = date
-        dive.duration = duration
-//        dive.depth = depth
-        dive.unit = unit
+        let newDive = Dive(name: name, date: date, duration: duration, depth: depth, unit: unit)
+        modelContext.insert(newDive)
         print("New Dive Entry")
     }
 }

@@ -21,15 +21,15 @@ class Dive {
     var latitude: Double
     var unit: Bool
     
-    init(name: String, depth: Int){
+    init(name: String, date: Date, duration: Int, depth: Int, unit: Bool){
         self.id = UUID()
         self.name = name
-        self.date = Date()
-        self.duration = 38
+        self.date = date
+        self.duration = duration
         self.depth = depth
         self.longitude = 0.0
         self.latitude = 0.0
-        self.unit = false // false/0 = meters, true/1 = feet
+        self.unit = unit
     }
 }
 
@@ -37,6 +37,6 @@ extension Dive: Identifiable { }
 
 extension Dive {
     static var preview: Dive {
-        Dive(name: "Test Dive", depth: 12)
+        Dive(name: "Test Dive", date: Date(), duration: 14, depth: 12, unit: false)
     }
 }

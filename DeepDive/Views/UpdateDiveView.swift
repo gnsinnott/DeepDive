@@ -11,12 +11,14 @@ import SwiftData
 struct UpdateDiveView: View {
     var dive: Dive
     
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
     @State private var name: String = ""
     @State private var date = Date()
     @State private var depth: Int = 0
-    @State private var units = 0
+    @State private var duration: Int = 0
+    @State private var unit = true
     
     var body: some View {
         NavigationStack {
@@ -34,13 +36,17 @@ struct UpdateDiveView: View {
                 Section(header: Text("Dive Details")) {
                     HStack {
                         Text("Depth:")
-//                            .font(.caption)
                             .foregroundStyle(.secondary)
                         TextField("Enter depth", value: $depth, format: .number)
-                        Picker("", selection: $units) {
-                            Text("meters").tag(0)
-                            Text("feet").tag(1)
+                        Picker("", selection: $unit) {
+                            Text("meters").tag(true)
+                            Text("feet").tag(false)
                         }
+                    }
+                    HStack {
+                        Text("Duration:")
+                            .foregroundStyle(.secondary)
+                        TextField("Enter duration", value: $duration, format: .number)
                     }
                 }
             }
@@ -49,15 +55,20 @@ struct UpdateDiveView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         updateDive()
-    //                    WidgetCenter.shared.reloadTimelines(ofKind: "TripsWidget")
                         dismiss()
                     }
                 }
             }
+            Button(role: .destructive) { delete() } label: {
+                                Label("Delete Dive", systemImage: "trash")
+                            }
         }
         .onAppear{
-            depth = dive.depth
+            name = dive.name
             date = dive.date
+            duration = dive.duration
+            depth = dive.depth
+            unit = dive.unit
         }
     }
     private func updateDive() {
@@ -67,6 +78,11 @@ struct UpdateDiveView: View {
         }
         dive.depth = depth
         dive.date = date
+    }
+    private func delete() {
+        print("Delete")
+        modelContext.delete(dive)
+        
     }
 }
 

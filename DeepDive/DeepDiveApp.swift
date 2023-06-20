@@ -13,10 +13,9 @@ struct DeepDiveApp: App {
 
     var body: some Scene {
         WindowGroup {
-//            DiveCard()
             ContentView()
         }
-        .modelContainer(previewContainer)
-//        .modelContainer(for: Dive.self)
+//        .modelContainer(previewContainer)
+        .modelContainer(for: Dive.self)
     }
 }
