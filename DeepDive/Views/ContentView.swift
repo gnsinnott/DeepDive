@@ -16,11 +16,24 @@ struct ContentView: View {
         TabView {
             diveList(dives: dives)
             .tabItem {
-                Image(systemName: "water.waves")
+                HStack {
+                    Image(systemName: "water.waves")
+                    Text("Dives")
+                }
             }
-            Text("MAp")
+            Text("Map")
                 .tabItem{
-                    Image(systemName: "globe")
+                    HStack {
+                        Image(systemName: "globe")
+                        Text("Map")
+                    }
+                }
+            Text("Settings")
+                .tabItem {
+                    HStack {
+                        Image(systemName: "gear")
+                        Text("Settings")
+                    }
                 }
         }
     }
