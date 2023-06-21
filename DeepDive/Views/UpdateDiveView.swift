@@ -19,18 +19,19 @@ struct UpdateDiveView: View {
     @State private var depth: Int = 0
     @State private var duration: Int = 0
     @State private var unit = true
+    @State private var location = ""
     
     var body: some View {
         NavigationStack {
             Form{
                 Section(header: Text("Dive name")) {
-                    TextField(dive.name.isEmpty ? "Enter dive name here..." : dive.name, text: $name)
+                    TextField("Enter dive name", text: $name)
                 }
                 Section(header: Text("Dive date")) {
                     DatePicker(
                     "Dive Date",
                     selection: $date,
-                    displayedComponents: [.date]
+                    displayedComponents: [.date, .hourAndMinute]
                     )
                 }
                 Section(header: Text("Dive Details")) {
@@ -47,6 +48,24 @@ struct UpdateDiveView: View {
                         Text("Duration:")
                             .foregroundStyle(.secondary)
                         TextField("Enter duration", value: $duration, format: .number)
+                        Text("minutes")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                Section(header: Text("Location")) {
+                    TextField("Enter dive location  here...", text: $location)
+//                    ZStack {
+//                        
+//                        let map = Map()
+//                        map
+//                            .frame(width: 300, height: 300)
+//                        Image(systemName: "mappin").imageScale(.large)
+//                    }
+                    HStack {
+                        Button("Drop Pin"){
+                            print("pin dropped")
+                        }
+                        Text("Location:")
                     }
                 }
             }
@@ -59,9 +78,12 @@ struct UpdateDiveView: View {
                     }
                 }
             }
-            Button(role: .destructive) { delete() } label: {
-                                Label("Delete Dive", systemImage: "trash")
-                            }
+            Button(role: .destructive) {
+                dismiss()
+                delete()
+            } label: {
+                Label("Delete Dive", systemImage: "trash")
+            }
         }
         .onAppear{
             name = dive.name
@@ -69,6 +91,7 @@ struct UpdateDiveView: View {
             duration = dive.duration
             depth = dive.depth
             unit = dive.unit
+            location = dive.location
         }
     }
     private func updateDive() {
@@ -82,7 +105,6 @@ struct UpdateDiveView: View {
     private func delete() {
         print("Delete")
         modelContext.delete(dive)
-        
     }
 }
 

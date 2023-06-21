@@ -21,6 +21,7 @@ struct NewDiveView: View {
     @State private var longitude: Double = 0.0
     @State private var latitutde: Double = 0.0
     @State private var unit: Bool = true
+    @State private var location: String = ""
     
     var body: some View {
         NavigationStack {
@@ -54,6 +55,7 @@ struct NewDiveView: View {
                     }
                 }
                 Section(header: Text("Location")) {
+                    TextField("Enter dive location  here...", text: $location)
                     ZStack {
                         
                         let map = Map()
@@ -84,7 +86,7 @@ struct NewDiveView: View {
         }
     }
     private func newDive() {
-        let newDive = Dive(name: name, date: date, duration: duration, depth: depth, unit: unit)
+        let newDive = Dive(name: name, date: date, duration: duration, depth: depth, unit: unit, location: location)
         modelContext.insert(newDive)
         print("New Dive Entry")
     }

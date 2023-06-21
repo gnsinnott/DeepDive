@@ -10,7 +10,8 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var dives: [Dive]
+    @Query(sort: \.date, order: .reverse)
+    var dives: [Dive]
     
     var body: some View {
         TabView {
@@ -47,7 +48,7 @@ struct diveList: View {
             ScrollView {
                 ForEach(dives) { dive in
                     NavigationLink(destination: UpdateDiveView(dive: dive)) {
-                        DiveCard(dive: dive)
+                        DiveCard(count: 1, dive: dive)
                     }
                     .buttonStyle(.plain)
                 }

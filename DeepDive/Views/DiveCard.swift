@@ -8,7 +8,8 @@
 import SwiftUI
 import SwiftData
 
-struct DiveCard: View {    
+struct DiveCard: View {
+    var count: Int = 1
     var dive: Dive
     var body: some View {
         ZStack {
@@ -19,7 +20,7 @@ struct DiveCard: View {
                     VStack {
                         Text("🤿 1: \(dive.name)")
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        Text("Roatan")
+                        Text(dive.location)
                     }
             
                     VStack {
