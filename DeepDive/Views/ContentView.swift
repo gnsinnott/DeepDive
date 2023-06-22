@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import MapKit
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
@@ -22,7 +23,10 @@ struct ContentView: View {
                     Text("Dives")
                 }
             }
-            Text("Map")
+            VStack {
+                DiveMapView()
+                Spacer()
+            }
                 .tabItem{
                     HStack {
                         Image(systemName: "globe")
@@ -64,6 +68,7 @@ struct diveList: View {
         }
     }
 }
+
 #Preview {
     MainActor.assumeIsolated {
     ContentView()

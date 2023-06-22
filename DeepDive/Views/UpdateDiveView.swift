@@ -101,6 +101,8 @@ struct UpdateDiveView: View {
         }
         dive.depth = depth
         dive.date = date
+        dive.duration = duration
+        dive.location = location
     }
     private func delete() {
         print("Delete")

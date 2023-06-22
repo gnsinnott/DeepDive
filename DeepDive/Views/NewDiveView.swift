@@ -55,11 +55,18 @@ struct NewDiveView: View {
                     }
                 }
                 Section(header: Text("Location")) {
-                    TextField("Enter dive location  here...", text: $location)
+                    TextField("Enter dive location here...", text: $location)
                     ZStack {
-                        
                         let map = Map()
+                        {
+                            Marker("Ocean", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 10)).tint(.red)
+                        }
                         map
+                            .mapControls {
+                                MapUserLocationButton()
+                                MapScaleView()
+                            }
+                    
                             .frame(width: 300, height: 300)
                         Image(systemName: "mappin").imageScale(.large)
                     }

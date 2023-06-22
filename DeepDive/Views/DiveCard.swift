@@ -18,7 +18,7 @@ struct DiveCard: View {
             VStack {
                 HStack {
                     VStack {
-                        Text("🤿 1: \(dive.name)")
+                        Text("🤿 \(count): \(dive.name)")
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         Text(dive.location)
                     }
@@ -47,7 +47,7 @@ struct DiveCard: View {
 #Preview {
     MainActor.assumeIsolated {
         let container = previewContainer
-           return DiveCard(dive: Dive.preview)
-                .modelContainer(container)
+        return DiveCard(dive: .preview)
+            .modelContainer( container)
     }
 }
