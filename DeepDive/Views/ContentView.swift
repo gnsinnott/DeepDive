@@ -15,37 +15,44 @@ struct ContentView: View {
     var dives: [Dive]
     
     var body: some View {
-        TabView {
-            diveList(dives: dives)
-            .tabItem {
-                HStack {
-                    Image(systemName: "water.waves")
-                    Text("Dives")
+        NavigationView {
+            TabView {
+                diveList(dives: dives)
+                .tabItem {
+                    HStack {
+                        Image(systemName: "water.waves")
+                        Text("Dives")
+                    }
                 }
-            }
-            VStack {
                 DiveMapView()
-                Spacer()
-            }
                 .tabItem{
                     HStack {
                         Image(systemName: "globe")
                         Text("Map")
                     }
                 }
-            Text("Settings")
+                Text("Settings")
                 .tabItem {
                     HStack {
                         Image(systemName: "gear")
                         Text("Settings")
                     }
                 }
+            }
+            .toolbar {
+                NavigationLink(
+                destination: NewDiveView(), label: {
+                    Image(systemName: "plus")
+                })
         }
     }
 }
 
 
 struct diveList: View {
+    @State private var showingAlert = false
+    @State private var navLinkActive = false
+    @State private var name = "Test"
     var dives: [Dive]
     var body: some View {
         NavigationStack {
@@ -58,15 +65,27 @@ struct diveList: View {
                 }
                 .navigationTitle("Your Dives")
             }
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading){
-                    NavigationLink(destination: NewDiveView()) {
-                        Label("Add Dive", systemImage: "plus")
-                    }
-                }
+//                Button {
+//                    showingAlert = true
+//                } label: {
+//                    Label("New Dive", systemImage: "plus")
+//                }
+//                .alert("Enter New Dive Name", isPresented: $showingAlert) {
+//                    TextField("Enter dive name", text: $name)
+//                    Button("Create Dive") {
+//                        submit()
+//                        navLinkActive = true
+//                    }
+//                }
+//                .navigationDestination(isPresented:$navLinkActive){
+//                    NewDiveView()
+//                }
             }
         }
     }
+//    func submit() {
+//        print("You entered \(name)")
+//    }
 }
 
 #Preview {

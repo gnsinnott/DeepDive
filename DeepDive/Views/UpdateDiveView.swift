@@ -18,7 +18,7 @@ struct UpdateDiveView: View {
     @State private var date = Date()
     @State private var depth: Int = 0
     @State private var duration: Int = 0
-    @State private var unit = true
+    @State private var depthUnit = true
     @State private var location = ""
     
     var body: some View {
@@ -39,7 +39,7 @@ struct UpdateDiveView: View {
                         Text("Depth:")
                             .foregroundStyle(.secondary)
                         TextField("Enter depth", value: $depth, format: .number)
-                        Picker("", selection: $unit) {
+                        Picker("", selection: $depthUnit) {
                             Text("meters").tag(true)
                             Text("feet").tag(false)
                         }
@@ -90,7 +90,7 @@ struct UpdateDiveView: View {
             date = dive.date
             duration = dive.duration
             depth = dive.depth
-            unit = dive.unit
+            depthUnit = dive.depthUnit
             location = dive.location
         }
     }
