@@ -32,8 +32,8 @@ struct DiveCard: View {
                 }
                 HStack{
                     VStack{
-                        Text("\(dive.depth) ft")
-                        Text("\(dive.bottomTime) min")
+                        Text("Depth: \(dive.depth) ft")
+                        Text("Bottom time: \(dive.bottomTime) min")
 //                        Text(dive.airMix.description)
                     }
                 }

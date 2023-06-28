@@ -18,6 +18,8 @@ struct NewDiveView: View {
     @State private var bottomTime: Int = 0
     @State private var depth: Int = 0
     @State private var depthUnit: Bool = true //true = m, false = ft
+    @State private var visibility: Int = 0
+    @State private var visibilityUnit: Bool = true //true = m, false = ft
     
     
     @State private var airMix: Dive.AirMix = .Air
@@ -39,7 +41,7 @@ struct NewDiveView: View {
     var body: some View {
         NavigationStack {
             TabView {
-                basicEntry(name: $name, date: $date, bottomTime: $bottomTime, depth: $depth, depthUnit: $depthUnit)
+                basicEntry(name: $name, date: $date, bottomTime: $bottomTime, depth: $depth, depthUnit: $depthUnit, visibility: $visibility, visibilityUnit: $visibilityUnit)
                 .tabItem {
                     HStack {
                         Image(systemName: "ruler")
@@ -94,12 +96,13 @@ struct basicEntry: View{
     @Binding public var bottomTime: Int
     @Binding public var depth: Int
     @Binding public var depthUnit: Bool
+    @Binding public var visibility: Int
+    @Binding public var visibilityUnit: Bool
     
     
     // TODO: First Dive number
     // TODO: Running dive number
     // TODO: Dive Number
-    // TODO: Visibility ft/m
     // TODO: Dive Type, Drift, Wreck, Deep, Wall, Training
     // TODO: Day/Night, use icons, highlight based on???
     // TODO: Surface Interval - amount of time since last dive
@@ -135,6 +138,17 @@ struct basicEntry: View{
                         .keyboardType(.numberPad)
                     Text("minutes")
                         .foregroundStyle(.secondary)
+                }
+                HStack{
+                    Text("Visbility:")
+                        .foregroundStyle(.secondary)
+                    TextField("Enter visibility", value: $visibility, format: .number)
+                        .keyboardType(.numberPad)
+                    Picker("", selection: $visibilityUnit) {
+                        Text("meters").tag(true)
+                        Text("feet").tag(false)
+                    }
+                    
                 }
             }
         }
