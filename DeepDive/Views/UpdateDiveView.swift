@@ -17,7 +17,7 @@ struct UpdateDiveView: View {
     @State private var name: String = ""
     @State private var date = Date()
     @State private var depth: Int = 0
-    @State private var duration: Int = 0
+    @State private var bottomTime: Int = 0
     @State private var depthUnit = true
     @State private var location = ""
     
@@ -45,9 +45,9 @@ struct UpdateDiveView: View {
                         }
                     }
                     HStack {
-                        Text("Duration:")
+                        Text("Bottom Time:")
                             .foregroundStyle(.secondary)
-                        TextField("Enter duration", value: $duration, format: .number)
+                        TextField("Enter bottom Time", value: $bottomTime, format: .number)
                         Text("minutes")
                             .foregroundStyle(.secondary)
                     }
@@ -88,7 +88,7 @@ struct UpdateDiveView: View {
         .onAppear{
             name = dive.name
             date = dive.date
-            duration = dive.duration
+            bottomTime = dive.bottomTime
             depth = dive.depth
             depthUnit = dive.depthUnit
             location = dive.location
@@ -101,7 +101,7 @@ struct UpdateDiveView: View {
         }
         dive.depth = depth
         dive.date = date
-        dive.duration = duration
+        dive.bottomTime = bottomTime
         dive.location = location
     }
     private func delete() {

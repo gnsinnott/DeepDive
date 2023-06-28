@@ -15,7 +15,7 @@ struct NewDiveView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var name: String = ""
     @State private var date: Date = Date()
-    @State private var duration: Int = 0
+    @State private var bottomTime: Int = 0
     @State private var depth: Int = 0
     @State private var depthUnit: Bool = true //true = m, false = ft
     
@@ -24,35 +24,49 @@ struct NewDiveView: View {
     @State private var startPressure = 0
     @State private var endPressure = 0
     @State private var pressureUnit = true //true = bar, false = psi
+    @State private var weight = 0
+    @State private var weightUnit = true //true = kg, fales = lbs
+    @State private var suit = 0
+    
     
     @State private var location: String = ""
     @State private var longitude: Double = 0.0
     @State private var latitutde: Double = 0.0
     
+    // TODO: Notes and stamp section
+    
+    
     var body: some View {
         NavigationStack {
             TabView {
-                basicEntry(name: $name, date: $date, duration: $duration, depth: $depth, depthUnit: $depthUnit)
+                basicEntry(name: $name, date: $date, bottomTime: $bottomTime, depth: $depth, depthUnit: $depthUnit)
                 .tabItem {
                     HStack {
                         Image(systemName: "ruler")
                         Text("Basic")
                     }
                 }
-                gearEntry(startPressure: $startPressure, endPressure: $endPressure, pressureUnit: $pressureUnit, airMix: $airMix)
+                gearEntry(startPressure: $startPressure, endPressure: $endPressure, pressureUnit: $pressureUnit, airMix: $airMix, weight: $weight, weightUnit: $weightUnit, suit: $suit)
                 .tabItem{
                     HStack {
                         Image(systemName: "backpack")
                         Text("Gear")
                     }
                 }
-                LocationEntry()
+                DiveMapView()
                 .tabItem {
                     HStack {
                         Image(systemName: "mappin.and.ellipse")
                         Text("Location")
                     }
                 }
+                Text("Notes")
+                    .tabItem {
+                        HStack{
+                            Image(systemName: "doc.richtext")
+                            Text("Notes")
+                        }
+                    }
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -67,7 +81,7 @@ struct NewDiveView: View {
         }
     }
     public func newDive() {
-        let newDive = Dive(name: name, date: date, duration: duration, depth: depth, depthUnit: depthUnit, location: location, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix)
+        let newDive = Dive(name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix)
         modelContext.insert(newDive)
         print(name)
         print("New Dive Entry")
@@ -77,9 +91,18 @@ struct NewDiveView: View {
 struct basicEntry: View{
     @Binding public var name: String
     @Binding public var date: Date
-    @Binding public var duration: Int
+    @Binding public var bottomTime: Int
     @Binding public var depth: Int
     @Binding public var depthUnit: Bool
+    
+    
+    // TODO: First Dive number
+    // TODO: Running dive number
+    // TODO: Dive Number
+    // TODO: Visibility ft/m
+    // TODO: Dive Type, Drift, Wreck, Deep, Wall, Training
+    // TODO: Day/Night, use icons, highlight based on???
+    // TODO: Surface Interval - amount of time since last dive
     
     
     var body: some View {
@@ -106,9 +129,9 @@ struct basicEntry: View{
                     }
                 }
                 HStack {
-                    Text("Duration:")
+                    Text("Bottom Time:")
                         .foregroundStyle(.secondary)
-                    TextField("Enter duration", value: $duration, format: .number)
+                    TextField("Enter bottom time", value: $bottomTime, format: .number)
                         .keyboardType(.numberPad)
                     Text("minutes")
                         .foregroundStyle(.secondary)
@@ -123,6 +146,10 @@ struct gearEntry: View {
     @Binding public var endPressure: Int
     @Binding public var pressureUnit: Bool
     @Binding public var airMix: Dive.AirMix
+    
+    @Binding public var weight: Int
+    @Binding public var weightUnit: Bool
+    @Binding public var suit: Int
     
     var body: some View {
         Form{
@@ -160,10 +187,36 @@ struct gearEntry: View {
                     }
                 }
             }
+            Section(header: Text("Dive Suit")) {
+                VStack{
+                    HStack{
+                        Text("Weights: ")
+                            .foregroundStyle(.secondary)
+                        TextField("Enter weight used", value: $weight, format: .number)
+                            .keyboardType(.numberPad)
+                        Picker("", selection: $weightUnit) {
+                            Text("kg").tag(true)
+                            Text("lb").tag(false)
+                        }
+                    }
+                    HStack{
+                        Text("Suit thickness")
+                            .foregroundStyle(.secondary)
+                        TextField("Enter suit thickness", value: $suit, format: .number)
+                        Text("mm")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            }
         }
     }
 }
 struct LocationEntry: View {
+    
+    // TODO: Salt/Non Salt
+    // TODO: Boat/Shore
+    // TODO: Water Temp
+    // TODO: Air Temp
     
     @State private var location: String = ""
     @State private var longitude: Double = 0.0

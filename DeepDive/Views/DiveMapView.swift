@@ -10,7 +10,7 @@ import MapKit
 import SwiftData
 
 struct DiveMapView: View {
-    @State private var diveName: String = "Two Crabs"
+    @State private var diveName: String = "Dive Name"
     @State private var pinLongitude: Double = 0.0
     @State private var pinLatitude: Double = 0.0
     @State private var pinDropped: Bool = false

@@ -14,7 +14,7 @@ class Dive {
     var id: UUID
     var name: String
     var date: Date
-    var duration: Int
+    var bottomTime: Int
     var depth: Int
     var location: String
     var longitude: Double
@@ -25,11 +25,11 @@ class Dive {
     var airUnit: Bool
     var airMix: Dive.AirMix
     
-    init(name: String, date: Date, duration: Int, depth: Int, depthUnit: Bool, location: String, startPressure: Int, endPressure: Int, airUnit: Bool, airMix: AirMix){
+    init(name: String, date: Date, bottomTime: Int, depth: Int, depthUnit: Bool, location: String, startPressure: Int, endPressure: Int, airUnit: Bool, airMix: AirMix){
         self.id = UUID()
         self.name = name
         self.date = date
-        self.duration = duration
+        self.bottomTime = bottomTime
         self.depth = depth
         self.location = location
         self.longitude = 0.0
@@ -46,7 +46,7 @@ extension Dive: Identifiable { }
 
 extension Dive {
     static var preview: Dive {
-        Dive(name: "Test Dive", date: Date(), duration: 14, depth: 12, depthUnit: false, location: "Nowhere", startPressure: 3000, endPressure: 1000, airUnit: false, airMix: AirMix.Air )
+        Dive(name: "Test Dive", date: Date(), bottomTime: 14, depth: 12, depthUnit: false, location: "Nowhere", startPressure: 3000, endPressure: 1000, airUnit: false, airMix: AirMix.Air )
     }
     
     enum AirMix: Codable, CaseIterable, Identifiable {
@@ -58,5 +58,16 @@ extension Dive {
         case Nitrox36
         case Trimix
         case Heliox
+        
+        var description: String {
+            switch self {
+            case .Air:
+              return "Air"
+            case .Nitrox32:
+              return "Nitrox32"
+            default:
+                return "Other"
+            }
+          }
     }
 }
