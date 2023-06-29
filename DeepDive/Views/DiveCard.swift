@@ -22,19 +22,19 @@ struct DiveCard: View {
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         Text(dive.location)
                     }
-            
+                    
                     VStack {
                         Text(dive.date, style: .date)
                         Text(dive.date, style: .time)
                     }
-//                    .font(.caption)
+                    //                    .font(.caption)
                     .padding()
                 }
                 HStack{
                     VStack{
                         Text("Depth: \(dive.depth) ft")
                         Text("Bottom time: \(dive.bottomTime) min")
-//                        Text(dive.airMix.description)
+                        //                        Text(dive.airMix.description)
                     }
                 }
             }

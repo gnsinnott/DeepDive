@@ -11,8 +11,11 @@ import MapKit
 
 struct NewDiveView: View {
     
+//    var dive: Dive = Dive.emptyDive()
+    
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    
     @State private var name: String = ""
     @State private var date: Date = Date()
     @State private var bottomTime: Int = 0
@@ -20,7 +23,8 @@ struct NewDiveView: View {
     @State private var depthUnit: Bool = true //true = m, false = ft
     @State private var visibility: Int = 0
     @State private var visibilityUnit: Bool = true //true = m, false = ft
-    
+    @State private var diveType: Dive.DiveType = .Deep
+    @State private var night: Bool = false
     
     @State private var airMix: Dive.AirMix = .Air
     @State private var startPressure = 0
@@ -29,6 +33,12 @@ struct NewDiveView: View {
     @State private var weight = 0
     @State private var weightUnit = true //true = kg, fales = lbs
     @State private var suit = 0
+    
+    @State private var boatDive = true
+    @State private var saltWater = true
+    @State private var airTemp = 0.0
+    @State private var waterTemp = 0.0
+    @State private var tempUnit = true
     
     
     @State private var location: String = ""
@@ -41,7 +51,7 @@ struct NewDiveView: View {
     var body: some View {
         NavigationStack {
             TabView {
-                basicEntry(name: $name, date: $date, bottomTime: $bottomTime, depth: $depth, depthUnit: $depthUnit, visibility: $visibility, visibilityUnit: $visibilityUnit)
+                basicEntryTabView(name: $name, date: $date, bottomTime: $bottomTime, depth: $depth, depthUnit: $depthUnit, visibility: $visibility, visibilityUnit: $visibilityUnit, diveType: $diveType, night: $night )
                 .tabItem {
                     HStack {
                         Image(systemName: "ruler")
@@ -55,14 +65,16 @@ struct NewDiveView: View {
                         Text("Gear")
                     }
                 }
-                DiveMapView()
+                SetDiveLocationView(name: name, boat: $boatDive, saltWater: $saltWater, waterTemp: $waterTemp, airTemp: $airTemp, tempUnit: $tempUnit  )
                 .tabItem {
                     HStack {
                         Image(systemName: "mappin.and.ellipse")
                         Text("Location")
                     }
                 }
-                Text("Notes")
+                Button("Press Me"){
+//                    print(dive == nil)
+                }
                     .tabItem {
                         HStack{
                             Image(systemName: "doc.richtext")
@@ -83,78 +95,13 @@ struct NewDiveView: View {
         }
     }
     public func newDive() {
-        let newDive = Dive(name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix)
+        let newDive = Dive(name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix, visibility: visibility, visibilityUnit: visibilityUnit, diveType: diveType, night: night, boatDive: boatDive, saltWater: saltWater, airTemp: airTemp, waterTemp: waterTemp, tempUnit: tempUnit)
         modelContext.insert(newDive)
-        print(name)
         print("New Dive Entry")
     }
 }
 
-struct basicEntry: View{
-    @Binding public var name: String
-    @Binding public var date: Date
-    @Binding public var bottomTime: Int
-    @Binding public var depth: Int
-    @Binding public var depthUnit: Bool
-    @Binding public var visibility: Int
-    @Binding public var visibilityUnit: Bool
-    
-    
-    // TODO: First Dive number
-    // TODO: Running dive number
-    // TODO: Dive Number
-    // TODO: Dive Type, Drift, Wreck, Deep, Wall, Training
-    // TODO: Day/Night, use icons, highlight based on???
-    // TODO: Surface Interval - amount of time since last dive
-    
-    
-    var body: some View {
-        Form {
-            Section(header: Text("Dive name")) {
-                TextField("Enter dive name here...", text: $name)
-            }
-            Section(header: Text("Dive Date and Time")) {
-                DatePicker(
-                    "Time In:",
-                    selection: $date,
-                    displayedComponents: [.date, .hourAndMinute]
-                )
-            }
-            Section(header: Text("Dive Details")) {
-                HStack {
-                    Text("Depth:")
-                        .foregroundStyle(.secondary)
-                    TextField("Enter depth", value: $depth, format: .number)
-                        .keyboardType(.numberPad)
-                    Picker("", selection: $depthUnit) {
-                        Text("meters").tag(true)
-                        Text("feet").tag(false)
-                    }
-                }
-                HStack {
-                    Text("Bottom Time:")
-                        .foregroundStyle(.secondary)
-                    TextField("Enter bottom time", value: $bottomTime, format: .number)
-                        .keyboardType(.numberPad)
-                    Text("minutes")
-                        .foregroundStyle(.secondary)
-                }
-                HStack{
-                    Text("Visbility:")
-                        .foregroundStyle(.secondary)
-                    TextField("Enter visibility", value: $visibility, format: .number)
-                        .keyboardType(.numberPad)
-                    Picker("", selection: $visibilityUnit) {
-                        Text("meters").tag(true)
-                        Text("feet").tag(false)
-                    }
-                    
-                }
-            }
-        }
-    }
-}
-
+// MARK: Gear Entry Tab
 struct gearEntry: View {
     @Binding public var startPressure: Int
     @Binding public var endPressure: Int
@@ -225,6 +172,8 @@ struct gearEntry: View {
         }
     }
 }
+
+// MARK: Location Entry Tab
 struct LocationEntry: View {
     
     // TODO: Salt/Non Salt
@@ -235,7 +184,7 @@ struct LocationEntry: View {
     @State private var location: String = ""
     @State private var longitude: Double = 0.0
     @State private var latitutde: Double = 0.0
-    
+    @State private var name: String = ""
     var body: some View {
         NavigationStack {
             Form {
@@ -270,11 +219,10 @@ struct LocationEntry: View {
     }
 }
 
-
 #Preview {
     MainActor.assumeIsolated {
         let container = previewContainer
-        return NewDiveView()
+        return NewDiveView(/*dive: Dive.preview*/)
                 .modelContainer(container)
     }
 }

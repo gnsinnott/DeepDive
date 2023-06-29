@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 import CoreLocation
 
-// Unit bool, true = metric(meters,bar,etc) false = imperial(ft, psi, etc)
+// Unit bool, true = metric(meters,bar,celsius, etc) false = imperial(ft,psi,farenheit, etc)
 
 @Model
 class Dive {
@@ -30,8 +30,13 @@ class Dive {
     var visibilityUnit: Bool
     var diveType: Dive.DiveType
     var night: Bool
+    var boatDive: Bool
+    var saltWater: Bool
+    var airTemp: Double
+    var waterTemp: Double
+    var tempUnit: Bool
     
-    init(name: String, date: Date, bottomTime: Int, depth: Int, depthUnit: Bool, location: String, startPressure: Int, endPressure: Int, airUnit: Bool, airMix: AirMix, visibility: Int, visibilityUnit: Bool, diveType: DiveType, night: Bool){
+    init(name: String, date: Date, bottomTime: Int, depth: Int, depthUnit: Bool, location: String, startPressure: Int, endPressure: Int, airUnit: Bool, airMix: AirMix, visibility: Int, visibilityUnit: Bool, diveType: DiveType, night: Bool, boatDive: Bool, saltWater: Bool, airTemp: Double, waterTemp: Double, tempUnit: Bool){
         self.id = UUID()
         self.name = name
         self.date = date
@@ -49,6 +54,11 @@ class Dive {
         self.visibilityUnit = visibilityUnit
         self.diveType = diveType
         self.night = night
+        self.boatDive = boatDive
+        self.saltWater = saltWater
+        self.airTemp = airTemp
+        self.waterTemp = waterTemp
+        self.tempUnit = tempUnit
     }
 }
 
@@ -56,11 +66,11 @@ extension Dive: Identifiable { }
 
 extension Dive {
     static var preview: Dive {
-        Dive(name: "Test Dive", date: Date(), bottomTime: 14, depth: 12, depthUnit: false, location: "Nowhere", startPressure: 3000, endPressure: 1000, airUnit: false, airMix: AirMix.Air, visibility: 40, visibilityUnit: false, diveType: DiveType.Drift, night: false)
+        Dive(name: "Test Dive", date: Date(), bottomTime: 14, depth: 12, depthUnit: false, location: "Nowhere", startPressure: 3000, endPressure: 1000, airUnit: false, airMix: AirMix.Air, visibility: 40, visibilityUnit: false, diveType: DiveType.Drift, night: false, boatDive: true, saltWater: true, airTemp: 90, waterTemp: 83, tempUnit: false)
     }
     
     static func emptyDive() -> Dive {
-        Dive(name: "", date: Date(), bottomTime: 0, depth: 0, depthUnit: true, location: "", startPressure: 0, endPressure: 0, airUnit: true, airMix: AirMix.Air, visibility: 0, visibilityUnit: true, diveType: DiveType.Deep, night: false)
+        Dive(name: "", date: Date(), bottomTime: 0, depth: 0, depthUnit: true, location: "", startPressure: 0, endPressure: 0, airUnit: true, airMix: AirMix.Air, visibility: 0, visibilityUnit: true, diveType: DiveType.Deep, night: false, boatDive: true, saltWater: true, airTemp: 32.5, waterTemp: 28, tempUnit: true)
     }
     
     enum AirMix: Codable, CaseIterable, Identifiable {

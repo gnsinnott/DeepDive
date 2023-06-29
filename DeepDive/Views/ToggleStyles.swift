@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DayNighToggleStyle: ToggleStyle {
+struct DayNightToggleStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         Button {
             configuration.isOn.toggle()
@@ -17,7 +17,7 @@ struct DayNighToggleStyle: ToggleStyle {
                 Image(systemName: configuration.isOn ? "moon" : "sun.max")
                     .foregroundStyle(configuration.isOn ? Color.blue : .orange)
                     .accessibility(label: Text(configuration.isOn ? "Night Dive" : "Day Dive"))
-                .imageScale(.large)
+                    .imageScale(.large)
             }
         }
     }

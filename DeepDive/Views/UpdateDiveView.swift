@@ -29,9 +29,9 @@ struct UpdateDiveView: View {
                 }
                 Section(header: Text("Dive date")) {
                     DatePicker(
-                    "Dive Date",
-                    selection: $date,
-                    displayedComponents: [.date, .hourAndMinute]
+                        "Dive Date",
+                        selection: $date,
+                        displayedComponents: [.date, .hourAndMinute]
                     )
                 }
                 Section(header: Text("Dive Details")) {
@@ -54,13 +54,13 @@ struct UpdateDiveView: View {
                 }
                 Section(header: Text("Location")) {
                     TextField("Enter dive location  here...", text: $location)
-//                    ZStack {
-//                        
-//                        let map = Map()
-//                        map
-//                            .frame(width: 300, height: 300)
-//                        Image(systemName: "mappin").imageScale(.large)
-//                    }
+                    //                    ZStack {
+                    //                        
+                    //                        let map = Map()
+                    //                        map
+                    //                            .frame(width: 300, height: 300)
+                    //                        Image(systemName: "mappin").imageScale(.large)
+                    //                    }
                     HStack {
                         Button("Drop Pin"){
                             print("pin dropped")
@@ -114,6 +114,6 @@ struct UpdateDiveView: View {
     MainActor.assumeIsolated {
         let container = previewContainer
         return UpdateDiveView(dive: Dive.preview)
-                .modelContainer(container)
+            .modelContainer(container)
     }
 }

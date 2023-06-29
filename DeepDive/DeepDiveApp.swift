@@ -10,12 +10,11 @@ import SwiftData
 
 @main
 struct DeepDiveApp: App {
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-//        .modelContainer(previewContainer)
         .modelContainer(for: Dive.self)
     }
 }
