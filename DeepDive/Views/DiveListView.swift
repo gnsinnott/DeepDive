@@ -16,7 +16,7 @@ struct diveListView: View {
         NavigationStack {
             ScrollView {
                 ForEach(dives) { dive in
-                    NavigationLink(destination: UpdateDiveView(dive: dive)) {
+                    NavigationLink(destination: DiveView(dive: dive)) {
                         DiveCard(count: 1, dive: dive)
                     }
                     .buttonStyle(.plain)

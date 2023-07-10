@@ -50,14 +50,9 @@ struct SetDiveLocationView: View {
                 }.frame(height: 300)
                 HStack {
                     Button("Drop Pin") {
-                        focusedField = nil
-//                        lonFocus = false
-//                        latFocus = false
-                        print(focusedField)
                         pinLatitude = visibleRegion?.center.latitude ?? 0.0
                         pinLongitude = visibleRegion?.center.longitude ?? 0.0
                         diveSite = Marker(name, coordinate: CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongitude))
-//                        diveSite = newDiveSite
                         print(pinLatitude, pinLongitude)
                         pinDropped = true
                     }
@@ -70,14 +65,21 @@ struct SetDiveLocationView: View {
                                 .foregroundStyle(.secondary)
                             TextField("Latitude:", value:$pinLatitude, format: .number)
                                 .focused($focusedField, equals: "latitude")
-                                .keyboardType(.decimalPad)
+                                .keyboardType(.numbersAndPunctuation)
+                                .toolbar {
+                                    ToolbarItemGroup(placement: .keyboard) {
+                                        Button("Done") {
+                                            focusedField = nil
+                                        }
+                                    }
+                                }
                         }
                         HStack {
                             Text("Longitude")
                                 .foregroundStyle(.secondary)
                             TextField("Longitude:", value:$pinLongitude, format: .number)
                                 .focused($focusedField, equals: "longitude")
-                                .keyboardType(.decimalPad)
+                                .keyboardType(.numbersAndPunctuation)
                         }
                     }
                     Button("Set") {
@@ -91,8 +93,6 @@ struct SetDiveLocationView: View {
                 Text("Dive Coordinates: \(pinLatitude, specifier: "%.5f"), \(pinLongitude, specifier: "%.5f")")
             }
             Section(header: Text("Location Details")) {
-                // TODO: Water Temp
-                // TODO: Air Temp
                 Toggle(boat ? "Boat Dive 🛥️" : "Shore Dive 🏝️", isOn: $boat)
                     .tint(Color.blue)
                 Toggle(saltWater ? "Salt Water" : "Fresh Water", isOn: $saltWater)

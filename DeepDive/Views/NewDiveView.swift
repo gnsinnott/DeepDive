@@ -26,7 +26,9 @@ struct NewDiveView: View {
     @State private var diveType: Dive.DiveType = .Deep
     @State private var night: Bool = false
     
-    @State private var airMix: Dive.AirMix = .Air
+    @State private var airMix: Dive.AirMix = Dive.AirMix.Air
+    @State private var tankSize: Int = 0
+    @State private var tankSizeUnit: Bool = true //true = liter, false = cu ft
     @State private var startPressure = 0
     @State private var endPressure = 0
     @State private var pressureUnit = true //true = bar, false = psi
@@ -58,7 +60,7 @@ struct NewDiveView: View {
                         Text("Basic")
                     }
                 }
-                gearEntry(startPressure: $startPressure, endPressure: $endPressure, pressureUnit: $pressureUnit, airMix: $airMix, weight: $weight, weightUnit: $weightUnit, suit: $suit)
+                gearEntry(airMix: $airMix, tankSize: $tankSize, tankSizeUnit: $tankSizeUnit, startPressure: $startPressure, endPressure: $endPressure, pressureUnit: $pressureUnit, weight: $weight, weightUnit: $weightUnit, suit: $suit)
                 .tabItem{
                     HStack {
                         Image(systemName: "backpack")
@@ -84,8 +86,8 @@ struct NewDiveView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") {
-                        print("Done pressed")
+                    Button("Submit") {
+                        print("Submit pressed")
                         newDive()
                         dismiss()
                     }
@@ -95,7 +97,7 @@ struct NewDiveView: View {
         }
     }
     public func newDive() {
-        let newDive = Dive(name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix, visibility: visibility, visibilityUnit: visibilityUnit, diveType: diveType, night: night, boatDive: boatDive, saltWater: saltWater, airTemp: airTemp, waterTemp: waterTemp, tempUnit: tempUnit)
+        let newDive = Dive(name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix, tankSize: tankSize, tankSizeUnit: tankSizeUnit, visibility: visibility, visibilityUnit: visibilityUnit, diveType: diveType, night: night, boatDive: boatDive, saltWater: saltWater, airTemp: airTemp, waterTemp: waterTemp, tempUnit: tempUnit, weight: weight, weightUnit: weightUnit)
         modelContext.insert(newDive)
         print("New Dive Entry")
     }
@@ -103,10 +105,13 @@ struct NewDiveView: View {
 
 // MARK: Gear Entry Tab
 struct gearEntry: View {
+    @Binding public var airMix: Dive.AirMix
+    @Binding public var tankSize: Int
+    @Binding public var tankSizeUnit: Bool
     @Binding public var startPressure: Int
     @Binding public var endPressure: Int
     @Binding public var pressureUnit: Bool
-    @Binding public var airMix: Dive.AirMix
+    
     
     @Binding public var weight: Int
     @Binding public var weightUnit: Bool
@@ -123,6 +128,16 @@ struct gearEntry: View {
                             ForEach(Dive.AirMix.allCases) {option in
                             Text(String(describing: option))
                             }
+                        }
+                    }
+                    HStack{
+                        Text("Tank Size:")
+                            .foregroundStyle(.secondary)
+                        TextField("Enter tank size", value: $tankSize, format: .number)
+                            .keyboardType(.numberPad)
+                        Picker("", selection: $tankSizeUnit) {
+                            Text("liters").tag(true)
+                            Text("cu ft").tag(false)
                         }
                     }
                     HStack {
@@ -167,52 +182,6 @@ struct gearEntry: View {
                         Text("mm")
                             .foregroundStyle(.secondary)
                     }
-                }
-            }
-        }
-    }
-}
-
-// MARK: Location Entry Tab
-struct LocationEntry: View {
-    
-    // TODO: Salt/Non Salt
-    // TODO: Boat/Shore
-    // TODO: Water Temp
-    // TODO: Air Temp
-    
-    @State private var location: String = ""
-    @State private var longitude: Double = 0.0
-    @State private var latitutde: Double = 0.0
-    @State private var name: String = ""
-    var body: some View {
-        NavigationStack {
-            Form {
-                Section(header: Text("Location")) {
-                    TextField("Enter dive location name here...", text: $location)
-                    ZStack {
-                        let map = Map()
-                        {
-                            Marker("Ocean", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 10)).tint(.red)
-                        }
-                        map
-                            .mapControls {
-                                MapUserLocationButton()
-                                MapScaleView()
-                            }
-                        
-                            .frame(width: 300, height: 300)
-                        Image(systemName: "mappin").imageScale(.large)
-                    }
-                    HStack {
-                        Button("Drop Pin"){
-                            print("pin dropped")
-                        }
-                        Text("Location:")
-                    }
-                }
-                Button("Press me"){
-                    print("TEST")
                 }
             }
         }
