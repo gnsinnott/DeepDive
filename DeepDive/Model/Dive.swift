@@ -81,29 +81,32 @@ extension Dive {
         Dive(name: "", date: Date(), bottomTime: 0, depth: 0, depthUnit: true, location: "", startPressure: 0, endPressure: 0, airUnit: true, airMix: AirMix.Air, tankSize: 0, tankSizeUnit: true, visibility: 0, visibilityUnit: true, diveType: DiveType.Deep, night: false, boatDive: true, saltWater: true, airTemp: 32.5, waterTemp: 28, tempUnit: true, weight: 0, weightUnit: true)
     }
     
-    enum AirMix: String, Codable, CaseIterable, Identifiable {
+    enum AirMix: Int, Codable, CaseIterable, Identifiable {
         var id: Self {
             return self
         }
-        case Air = "Air"
-        case Nitrox32 = "Nitrox32"
-        case Nitrox36 = "Nitrox36"
-        case Trimix = "Trimix"
-        case Heliox = "Heliox"
-        
-//        var description: String {
-//            switch self {
-//            case .Air:
-//              return "Air"
-//            case .Nitrox32:
-//              return "Nitrox32"
-//            default:
-//                return "Other"
-//            }
-//          }
+        case Air
+        case Nitrox32
+        case Nitrox36
+        case Trimix
+        case Heliox
     }
     
-    enum DiveType: Codable, CaseIterable, Identifiable {
+    static func airMixFromId(airmix: AirMix) -> String {
+        if (airmix == AirMix.Air){
+            return "Air"
+        } else if (airmix == AirMix.Nitrox32) {
+            return "Nitrox32"
+        } else if (airmix == AirMix.Nitrox36) {
+            return "Nitrox36"
+        } else if (airmix == AirMix.Trimix) {
+            return "Trimix"
+        } else {
+            return "Heliox"
+        }
+    }
+    
+    enum DiveType: Int, Codable, CaseIterable, Identifiable {
         var id: Self {
             return self
         }
@@ -112,6 +115,19 @@ extension Dive {
         case Training
         case Well
         case Wreck
-        
+    }
+    
+    static func diveTypeFromId(diveType: DiveType) -> String {
+        if (diveType == DiveType.Deep) {
+            return "Deep"
+        } else if (diveType == DiveType.Drift) {
+            return "Drift"
+        } else if (diveType == DiveType.Training) {
+            return "Training"
+        } else if (diveType == DiveType.Well) {
+            return "Well"
+        } else {
+            return "Wreck"
+        }
     }
 }

@@ -34,7 +34,6 @@ struct DiveCard: View {
                     VStack{
                         Text("Depth: \(dive.depth) ft")
                         Text("Bottom time: \(dive.bottomTime) min")
-                        //                        Text(dive.airMix.description)
                     }
                 }
             }
@@ -44,10 +43,10 @@ struct DiveCard: View {
     }
 }
 
-#Preview {
-    MainActor.assumeIsolated {
-        let container = previewContainer
-        return DiveCard(dive: .preview)
-            .modelContainer( container)
-    }
-}
+//#Preview {
+//    MainActor.assumeIsolated {
+//        let container = previewContainer
+//        return DiveCard(dive: .preview)
+//            .modelContainer( container)
+//    }
+//}

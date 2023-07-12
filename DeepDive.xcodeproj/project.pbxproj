@@ -10,6 +10,7 @@
 		72044B822A44C317006BAEF3 /* SetDiveLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72044B812A44C317006BAEF3 /* SetDiveLocation.swift */; };
 		720F66492A3909BC001B6446 /* SampleDives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F66482A3909BC001B6446 /* SampleDives.swift */; };
 		720F664F2A3A2450001B6446 /* UpdateDiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F664E2A3A2450001B6446 /* UpdateDiveView.swift */; };
+		721A76B32A4E2941001EC4DF /* DiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721A76B22A4E2941001EC4DF /* DiveView.swift */; };
 		724449392A4E098B0043C86D /* BasicEntryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724449382A4E098B0043C86D /* BasicEntryTabView.swift */; };
 		724608032A338A03005EAC46 /* DeepDiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608022A338A03005EAC46 /* DeepDiveApp.swift */; };
 		724608052A338A03005EAC46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608042A338A03005EAC46 /* ContentView.swift */; };
@@ -22,6 +23,8 @@
 		724608312A338A18005EAC46 /* Dive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608302A338A18005EAC46 /* Dive.swift */; };
 		724608332A338C95005EAC46 /* DiveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608322A338C95005EAC46 /* DiveCard.swift */; };
 		72AEFCE82A3B9EC200DEA260 /* NewDiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AEFCE72A3B9EC200DEA260 /* NewDiveView.swift */; };
+		72B6E6132A5CBC3A000A4D54 /* TankImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6E6122A5CBC3A000A4D54 /* TankImage.swift */; };
+		72C7F53B2A5DF74B0089B0A7 /* DiveLogTableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C7F53A2A5DF74B0089B0A7 /* DiveLogTableCard.swift */; };
 		72D6D9B42A38D9BD00482547 /* PreviewSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D6D9B32A38D9BD00482547 /* PreviewSampleData.swift */; };
 		72F1FB712A4CC2B4001B143C /* ToggleStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1FB702A4CC2B4001B143C /* ToggleStyles.swift */; };
 		72F1FB732A4DF42B001B143C /* DiveListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F1FB722A4DF42B001B143C /* DiveListView.swift */; };
@@ -48,6 +51,7 @@
 		72044B812A44C317006BAEF3 /* SetDiveLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDiveLocation.swift; sourceTree = "<group>"; };
 		720F66482A3909BC001B6446 /* SampleDives.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleDives.swift; sourceTree = "<group>"; };
 		720F664E2A3A2450001B6446 /* UpdateDiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDiveView.swift; sourceTree = "<group>"; };
+		721A76B22A4E2941001EC4DF /* DiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveView.swift; sourceTree = "<group>"; };
 		724449382A4E098B0043C86D /* BasicEntryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEntryTabView.swift; sourceTree = "<group>"; };
 		724607FF2A338A03005EAC46 /* DeepDive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeepDive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		724608022A338A03005EAC46 /* DeepDiveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDiveApp.swift; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 		724608302A338A18005EAC46 /* Dive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dive.swift; sourceTree = "<group>"; };
 		724608322A338C95005EAC46 /* DiveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCard.swift; sourceTree = "<group>"; };
 		72AEFCE72A3B9EC200DEA260 /* NewDiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDiveView.swift; sourceTree = "<group>"; };
+		72B6E6122A5CBC3A000A4D54 /* TankImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankImage.swift; sourceTree = "<group>"; };
+		72C7F53A2A5DF74B0089B0A7 /* DiveLogTableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogTableCard.swift; sourceTree = "<group>"; };
 		72D6D9B32A38D9BD00482547 /* PreviewSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSampleData.swift; sourceTree = "<group>"; };
 		72F1FB702A4CC2B4001B143C /* ToggleStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleStyles.swift; sourceTree = "<group>"; };
 		72F1FB722A4DF42B001B143C /* DiveListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveListView.swift; sourceTree = "<group>"; };
@@ -173,6 +179,9 @@
 				72AEFCE72A3B9EC200DEA260 /* NewDiveView.swift */,
 				724449382A4E098B0043C86D /* BasicEntryTabView.swift */,
 				72F1FB702A4CC2B4001B143C /* ToggleStyles.swift */,
+				721A76B22A4E2941001EC4DF /* DiveView.swift */,
+				72C7F53A2A5DF74B0089B0A7 /* DiveLogTableCard.swift */,
+				72B6E6122A5CBC3A000A4D54 /* TankImage.swift */,
 				724608322A338C95005EAC46 /* DiveCard.swift */,
 			);
 			path = Views;
@@ -328,7 +337,10 @@
 				7246080C2A338A04005EAC46 /* Item.swift in Sources */,
 				720F664F2A3A2450001B6446 /* UpdateDiveView.swift in Sources */,
 				72F1FB712A4CC2B4001B143C /* ToggleStyles.swift in Sources */,
+				72B6E6132A5CBC3A000A4D54 /* TankImage.swift in Sources */,
+				721A76B32A4E2941001EC4DF /* DiveView.swift in Sources */,
 				72AEFCE82A3B9EC200DEA260 /* NewDiveView.swift in Sources */,
+				72C7F53B2A5DF74B0089B0A7 /* DiveLogTableCard.swift in Sources */,
 				724449392A4E098B0043C86D /* BasicEntryTabView.swift in Sources */,
 				724608032A338A03005EAC46 /* DeepDiveApp.swift in Sources */,
 			);

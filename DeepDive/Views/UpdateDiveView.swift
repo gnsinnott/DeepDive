@@ -110,10 +110,10 @@ struct UpdateDiveView: View {
     }
 }
 
-#Preview {
-    MainActor.assumeIsolated {
-        let container = previewContainer
-        return UpdateDiveView(dive: Dive.preview)
-            .modelContainer(container)
-    }
-}
+//#Preview {
+//    MainActor.assumeIsolated {
+//        let container = previewContainer
+//        return UpdateDiveView(dive: Dive.preview)
+//            .modelContainer(container)
+//    }
+//}
