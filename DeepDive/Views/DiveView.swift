@@ -44,7 +44,7 @@ struct DiveView: View {
                             diveLocationView()
                         }
                         else {
-                            notesView()
+                            notesViewText(dive: dive)
                         }
                     }
                 }
@@ -74,7 +74,7 @@ struct diveOverviewText: View {
                     .foregroundStyle(dive.night ? Color.blue : .orange)
                 Text(dive.date.formatted(date: .numeric, time: .omitted))
             }
-            Text(Dive.diveTypeFromId(diveType: dive.diveType))
+            Text(Dive.diveTypeFromId(diveType: dive.diveType) + " Dive")
             Text("Time in: \(dive.date.formatted(date: .omitted, time: .shortened))")
             Text("Bottom Time: \(dive.bottomTime) minutes")
             Text("Depth: \(dive.depth) \(dive.depthUnit ? "m" : "ft")" )
@@ -105,8 +105,6 @@ struct gearViewText: View {
         let tankSizeUnitText = (dive.tankSizeUnit) ? "liters" : "cu ft"
         let pressureUnitText = (dive.airUnit) ? "bar" : "psi"
         VStack{
-            Text("Gear Details")
-                .font(.title)
             Text("Air Mix: \(Dive.airMixFromId(airmix: dive.airMix))")
             Text("Tank Size: \(dive.tankSize) " + tankSizeUnitText)
             Text("Weight: \(dive.weight) " + weightUnitText)
@@ -116,8 +114,6 @@ struct gearViewText: View {
         }
     }
 }
-
-
 
 struct diveLocationView: View {
     var body: some View {
@@ -134,6 +130,15 @@ struct notesView: View {
             .fill(Color.purple)
             .frame(height: 350)
             .padding()
+    }
+}
+
+struct notesViewText: View {
+    var dive: Dive
+    var body: some View {
+        VStack{
+            Text(dive.note)
+        }
     }
 }
 
