@@ -36,19 +36,31 @@ struct DiveView: View {
                 TabView(selection: $index) {
                     ForEach((0..<4), id: \.self) {index in
                         if (index == 0){
-                            diveOverviewText(dive: dive)
+                            VStack {
+                                diveOverviewText(dive: dive)
+                                Spacer()
+                            }
                         } else if (index == 1){
-                            gearViewText(dive: dive)
+                            VStack {
+                                gearViewText(dive: dive)
+                                Spacer()
+                            }
                         }
                         else if (index == 2) {
-                            diveLocationView()
+                            VStack {
+                                diveLocationView()
+                                Spacer()
+                            }
                         }
                         else {
-                            notesViewText(dive: dive)
+                            VStack {
+                                notesViewText(dive: dive)
+                                Spacer()
+                            }
                         }
                     }
+                    .toolbar(.hidden, for: .tabBar) // Hide tab bar for all TabViews in current view
                 }
-                .padding()
                 
             }
         }
@@ -68,17 +80,19 @@ struct diveOverviewCard: View {
 struct diveOverviewText: View {
     var dive: Dive
     var body: some View {
-        VStack{
-            HStack{
-                Image(systemName: dive.night ? "moon" : "sun.max")
-                    .foregroundStyle(dive.night ? Color.blue : .orange)
-                Text(dive.date.formatted(date: .numeric, time: .omitted))
+        ScrollView {
+            VStack{
+                HStack{
+                    Image(systemName: dive.night ? "moon" : "sun.max")
+                        .foregroundStyle(dive.night ? Color.blue : .orange)
+                    Text(dive.date.formatted(date: .numeric, time: .omitted))
+                }
+                Text(Dive.diveTypeFromId(diveType: dive.diveType) + " Dive")
+                Text("Time in: \(dive.date.formatted(date: .omitted, time: .shortened))")
+                Text("Bottom Time: \(dive.bottomTime) minutes")
+                Text("Depth: \(dive.depth) \(dive.depthUnit ? "m" : "ft")" )
+                Text("Visibility: \(dive.visibility) \(dive.visibilityUnit ? "m" : "ft")")
             }
-            Text(Dive.diveTypeFromId(diveType: dive.diveType) + " Dive")
-            Text("Time in: \(dive.date.formatted(date: .omitted, time: .shortened))")
-            Text("Bottom Time: \(dive.bottomTime) minutes")
-            Text("Depth: \(dive.depth) \(dive.depthUnit ? "m" : "ft")" )
-            Text("Visibility: \(dive.visibility) \(dive.visibilityUnit ? "m" : "ft")")
         }
         
     }
@@ -104,13 +118,15 @@ struct gearViewText: View {
         let weightUnitText = (dive.weightUnit) ? "kgs" : "lbs"
         let tankSizeUnitText = (dive.tankSizeUnit) ? "liters" : "cu ft"
         let pressureUnitText = (dive.airUnit) ? "bar" : "psi"
-        VStack{
-            Text("Air Mix: \(Dive.airMixFromId(airmix: dive.airMix))")
-            Text("Tank Size: \(dive.tankSize) " + tankSizeUnitText)
-            Text("Weight: \(dive.weight) " + weightUnitText)
-            Text("Start: \(dive.startPressure) " + pressureUnitText)
-            Text("End: \(dive.endPressure) " + pressureUnitText)
-            
+        ScrollView {
+            VStack{
+                Text("Air Mix: \(Dive.airMixFromId(airmix: dive.airMix))")
+                Text("Tank Size: \(dive.tankSize) " + tankSizeUnitText)
+                Text("Weight: \(dive.weight) " + weightUnitText)
+                Text("Start: \(dive.startPressure) " + pressureUnitText)
+                Text("End: \(dive.endPressure) " + pressureUnitText)
+                
+            }
         }
     }
 }
@@ -136,8 +152,11 @@ struct notesView: View {
 struct notesViewText: View {
     var dive: Dive
     var body: some View {
-        VStack{
-            Text(dive.note)
+        ScrollView {
+            VStack{
+                Text(dive.note)
+            }
+            .padding()
         }
     }
 }

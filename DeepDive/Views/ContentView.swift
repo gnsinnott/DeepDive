@@ -24,8 +24,7 @@ struct ContentView: View {
                             Text("Dives")
                         }
                     }
-                Text("Map of dives")
-//                SetDiveLocationView()
+               DiveMapView()
                     .tabItem{
                         HStack {
                             Image(systemName: "globe")
@@ -48,27 +47,6 @@ struct ContentView: View {
             }
         }
     }
-    
-    
-//    struct diveList: View {
-//        @State private var showingAlert = false
-//        @State private var navLinkActive = false
-//        @State private var name = "Test"
-//        var dives: [Dive]
-//        var body: some View {
-//            NavigationStack {
-//                ScrollView {
-//                    ForEach(dives) { dive in
-//                        NavigationLink(destination: UpdateDiveView(dive: dive)) {
-//                            DiveCard(count: 1, dive: dive)
-//                        }
-//                        .buttonStyle(.plain)
-//                    }
-//                    .navigationTitle("Your Dives")
-//                }
-//            }
-//        }
-//    }
 }
 
 #Preview {

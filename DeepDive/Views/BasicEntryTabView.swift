@@ -19,6 +19,9 @@ struct basicEntryTabView: View{
     @Binding public var diveType: Dive.DiveType
     @Binding public var night: Bool
     
+    @FocusState private var focusedField: String?
+    @FocusState private var isFocused: Bool
+    
     // TODO: First Dive number
     // TODO: Running dive number
     // TODO: Dive Number
@@ -29,6 +32,7 @@ struct basicEntryTabView: View{
         Form {
             Section(header: Text("Dive name")) {
                 TextField("Enter dive name here...", text: $name)
+                    .focused($focusedField, equals: "name")
             }
             Section(header: Text("Dive Date and Time")) {
                 DatePicker(
@@ -38,14 +42,15 @@ struct basicEntryTabView: View{
                 )
                 Toggle(night ? "Night Dive 🌙" : "Day Dive ☀️", isOn: $night)
                     .tint(Color.blue)
-//                    .toggleStyle(DayNightToggleStyle())
             }
             Section(header: Text("Dive Details")) {
                 HStack {
                     Text("Depth:")
                         .foregroundStyle(.secondary)
                     TextField("Enter depth", value: $depth, format: .number)
+                        .focused($isFocused)
                         .keyboardType(.numberPad)
+                        
                     Picker("", selection: $depthUnit) {
                         Text("meters").tag(true)
                         Text("feet").tag(false)
@@ -55,6 +60,7 @@ struct basicEntryTabView: View{
                     Text("Bottom Time:")
                         .foregroundStyle(.secondary)
                     TextField("Enter bottom time", value: $bottomTime, format: .number)
+                        .focused($isFocused)
                         .keyboardType(.numberPad)
                     Text("minutes")
                         .foregroundStyle(.secondary)
@@ -63,6 +69,7 @@ struct basicEntryTabView: View{
                     Text("Visbility:")
                         .foregroundStyle(.secondary)
                     TextField("Enter visibility", value: $visibility, format: .number)
+                        .focused($isFocused)
                         .keyboardType(.numberPad)
                     Picker("", selection: $visibilityUnit) {
                         Text("meters").tag(true)
@@ -80,6 +87,16 @@ struct basicEntryTabView: View{
                 }
             }
         }
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button() {
+                    hideKeyboard()
+                } label: {
+                    Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
+                }
+            }
+        }
+
     }
 }
-

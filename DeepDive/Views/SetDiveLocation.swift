@@ -12,8 +12,8 @@ import SwiftData
 struct SetDiveLocationView: View {
     var name: String = ""
     
-    @State private var pinLongitude: Double = 0.0
-    @State private var pinLatitude: Double = 0.0
+    @Binding public var longitude: Double
+    @Binding public var latitude: Double
     @State private var pinDropped: Bool = false
     
     @State private var position: MapCameraPosition = .automatic
@@ -23,8 +23,6 @@ struct SetDiveLocationView: View {
     @Binding public var boat: Bool
     @Binding public var saltWater: Bool
     
-    @FocusState private var latFocus: Bool
-    @FocusState private var lonFocus: Bool
     @FocusState private var focusedField: String?
     
     @Binding public var waterTemp: Double
@@ -32,7 +30,7 @@ struct SetDiveLocationView: View {
     @Binding public var tempUnit: Bool
     
     var body: some View {
-        @State var newDiveSite = Marker(name, coordinate: CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongitude))
+        @State var newDiveSite = Marker(name, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
         Form {
             Text(name).font(.largeTitle)
             Section(header: Text("Dive Location")) {
@@ -50,10 +48,10 @@ struct SetDiveLocationView: View {
                 }.frame(height: 300)
                 HStack {
                     Button("Drop Pin") {
-                        pinLatitude = visibleRegion?.center.latitude ?? 0.0
-                        pinLongitude = visibleRegion?.center.longitude ?? 0.0
-                        diveSite = Marker(name, coordinate: CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongitude))
-                        print(pinLatitude, pinLongitude)
+                        latitude = visibleRegion?.center.latitude ?? 0.0
+                        longitude = visibleRegion?.center.longitude ?? 0.0
+                        diveSite = Marker(name, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
+                        print(latitude, longitude)
                         pinDropped = true
                     }
                     Text("or set manually below")
@@ -63,34 +61,27 @@ struct SetDiveLocationView: View {
                         HStack {
                             Text("Latitude")
                                 .foregroundStyle(.secondary)
-                            TextField("Latitude:", value:$pinLatitude, format: .number)
+                            TextField("Latitude:", value:$latitude, format: .number)
                                 .focused($focusedField, equals: "latitude")
                                 .keyboardType(.numbersAndPunctuation)
-                                .toolbar {
-                                    ToolbarItemGroup(placement: .keyboard) {
-                                        Button("Done") {
-                                            focusedField = nil
-                                        }
-                                    }
-                                }
                         }
                         HStack {
                             Text("Longitude")
                                 .foregroundStyle(.secondary)
-                            TextField("Longitude:", value:$pinLongitude, format: .number)
+                            TextField("Longitude:", value:$longitude, format: .number)
                                 .focused($focusedField, equals: "longitude")
                                 .keyboardType(.numbersAndPunctuation)
                         }
                     }
                     Button("Set") {
-                        newDiveSite = Marker(name, coordinate: CLLocationCoordinate2D(latitude: pinLatitude, longitude: pinLongitude))
+                        newDiveSite = Marker(name, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
                         diveSite = newDiveSite
-                        print(pinLatitude, pinLongitude)
+                        print(latitude, longitude)
                         pinDropped = true
                     }
                 }
                 
-                Text("Dive Coordinates: \(pinLatitude, specifier: "%.5f"), \(pinLongitude, specifier: "%.5f")")
+                Text("Dive Coordinates: \(latitude, specifier: "%.5f"), \(longitude, specifier: "%.5f")")
             }
             Section(header: Text("Location Details")) {
                 Toggle(boat ? "Boat Dive 🛥️" : "Shore Dive 🏝️", isOn: $boat)

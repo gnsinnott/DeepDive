@@ -69,16 +69,14 @@ struct NewDiveView: View {
                         Text("Gear")
                     }
                 }
-                SetDiveLocationView(name: name, boat: $boatDive, saltWater: $saltWater, waterTemp: $waterTemp, airTemp: $airTemp, tempUnit: $tempUnit  )
+                SetDiveLocationView(name: name, longitude: $longitude, latitude: $latitutde, boat: $boatDive, saltWater: $saltWater, waterTemp: $waterTemp, airTemp: $airTemp, tempUnit: $tempUnit  )
                 .tabItem {
                     HStack {
                         Image(systemName: "mappin.and.ellipse")
                         Text("Location")
                     }
                 }
-                Button("Press Me"){
-//                    print(dive == nil)
-                }
+                DiveNotesEntryView(note: $note)
                     .tabItem {
                         HStack{
                             Image(systemName: "doc.richtext")
@@ -99,7 +97,7 @@ struct NewDiveView: View {
         }
     }
     public func newDive() {
-        let newDive = Dive(name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix, tankSize: tankSize, tankSizeUnit: tankSizeUnit, visibility: visibility, visibilityUnit: visibilityUnit, diveType: diveType, night: night, boatDive: boatDive, saltWater: saltWater, airTemp: airTemp, waterTemp: waterTemp, tempUnit: tempUnit, weight: weight, weightUnit: weightUnit, note: note)
+        let newDive = Dive(name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, longitude: longitude, latitude: latitutde, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix, tankSize: tankSize, tankSizeUnit: tankSizeUnit, visibility: visibility, visibilityUnit: visibilityUnit, diveType: diveType, night: night, boatDive: boatDive, saltWater: saltWater, airTemp: airTemp, waterTemp: waterTemp, tempUnit: tempUnit, weight: weight, weightUnit: weightUnit, note: note)
         modelContext.insert(newDive)
         print("New Dive Entry")
     }
