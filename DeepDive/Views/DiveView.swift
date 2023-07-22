@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct DiveView: View {
     @State var index = 0
@@ -23,7 +24,7 @@ struct DiveView: View {
                             gearViewCard(dive: dive)
                         }
                         else if (index == 2) {
-                            diveLocationView()
+                            diveLocationView(dive: dive)
                         }
                         else {
                             notesView()
@@ -48,7 +49,7 @@ struct DiveView: View {
                         }
                         else if (index == 2) {
                             VStack {
-                                diveLocationView()
+                                diveLocationTextView(dive: dive)
                                 Spacer()
                             }
                         }
@@ -59,11 +60,12 @@ struct DiveView: View {
                             }
                         }
                     }
-                    .toolbar(.hidden, for: .tabBar) // Hide tab bar for all TabViews in current view
+                    
                 }
-                
             }
+//            .toolbar(.hidden, for: .automatic) // Hide tab bar for all TabViews in current view
         }
+//        .toolbar(.hidden, for: .automatic) // Hide tab bar for all TabViews in current view
     }
 }
 
@@ -104,7 +106,6 @@ struct gearViewCard: View {
         ZStack {
             Rectangle()
                 .fill(Color.blue)
-                .blur(radius: 7.0)
                 .frame(height: 350)
                 .padding()
             TankImage(start: dive.startPressure, end: dive.endPressure, airType: Dive.airMixFromId(airmix: dive.airMix), tankSize: dive.tankSize, tankSizeUnit: dive.tankSizeUnit)
@@ -132,19 +133,39 @@ struct gearViewText: View {
 }
 
 struct diveLocationView: View {
+    var dive: Dive
     var body: some View {
-        Rectangle()
-            .fill(Color.green)
-            .frame(height: 350)
+        ZStack {
+            Map(){
+                Marker(dive.name, systemImage: "flag" , coordinate: CLLocationCoordinate2D(latitude: dive.latitude, longitude: dive.longitude))
+            }
             .padding()
+            Rectangle()
+                .foregroundColor(Color.white.opacity(0.01))
+            .padding()
+        }
+    }
+}
+
+struct diveLocationTextView: View {
+    var dive: Dive
+    var body: some View {
+        VStack{
+            Text(dive.location)
+            Text("Location coordinates")
+            Text(dive.boatDive ? "Boat Dive 🛥️" : "Shore Dive 🏝️")
+            Text(dive.saltWater ? "Salt Water" : "Fresh Water")
+            Text(String(dive.airTemp) + (dive.airUnit ? " ˚C" : " ˚F"))
+        }
     }
 }
 
 struct notesView: View {
     var body: some View {
+        dive.stampImage
         Rectangle()
             .fill(Color.purple)
-            .frame(height: 350)
+            .frame(height: 100)
             .padding()
     }
 }

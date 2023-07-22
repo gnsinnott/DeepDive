@@ -9,9 +9,9 @@ import SwiftUI
 
 struct DiveLogTableCard: View {
     var body: some View {
-        var width = CGFloat(80)
-        var thickness = CGFloat(3)
-        var height = CGFloat(100)
+        let width = CGFloat(80)
+        let thickness = CGFloat(3)
+        let height = CGFloat(100)
         ZStack{
             HStack(spacing: 0) {
                 VStack(spacing: 0) {

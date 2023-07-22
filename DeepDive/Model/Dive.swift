@@ -42,9 +42,9 @@ class Dive {
     var weightUnit: Bool
     var note: String
 //    var images: [Image]
-//    var stamp: Image
+    var stampImage: Image?
     
-    init(name: String, date: Date, bottomTime: Int, depth: Int, depthUnit: Bool, location: String, longitude: Double, latitude: Double, startPressure: Int, endPressure: Int, airUnit: Bool, airMix: AirMix, tankSize: Int, tankSizeUnit: Bool, visibility: Int, visibilityUnit: Bool, diveType: DiveType, night: Bool, boatDive: Bool, saltWater: Bool, airTemp: Double, waterTemp: Double, tempUnit: Bool, weight: Int, weightUnit: Bool, note: String){
+    init(name: String, date: Date, bottomTime: Int, depth: Int, depthUnit: Bool, location: String, longitude: Double, latitude: Double, startPressure: Int, endPressure: Int, airUnit: Bool, airMix: AirMix, tankSize: Int, tankSizeUnit: Bool, visibility: Int, visibilityUnit: Bool, diveType: DiveType, night: Bool, boatDive: Bool, saltWater: Bool, airTemp: Double, waterTemp: Double, tempUnit: Bool, weight: Int, weightUnit: Bool, note: String, stampImage: Image? = nil){
         self.id = UUID()
         self.name = name
         self.date = date
@@ -72,6 +72,7 @@ class Dive {
         self.weight = weight
         self.weightUnit = weightUnit
         self.note = note
+        self.stampImage = stampImage
     }
 }
 

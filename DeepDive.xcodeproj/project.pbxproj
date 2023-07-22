@@ -25,6 +25,7 @@
 		724608312A338A18005EAC46 /* Dive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608302A338A18005EAC46 /* Dive.swift */; };
 		724608332A338C95005EAC46 /* DiveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608322A338C95005EAC46 /* DiveCard.swift */; };
 		7294EC752A5F5947003007EA /* GearEntryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7294EC742A5F5947003007EA /* GearEntryTabView.swift */; };
+		729912EA2A686DE2001A19D6 /* DiveFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729912E92A686DE2001A19D6 /* DiveFlag.swift */; };
 		729EA1B22A67301D00410CCE /* KeyboardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729EA1B12A67301D00410CCE /* KeyboardUtils.swift */; };
 		72AEFCE82A3B9EC200DEA260 /* NewDiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AEFCE72A3B9EC200DEA260 /* NewDiveView.swift */; };
 		72B6E6132A5CBC3A000A4D54 /* TankImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6E6122A5CBC3A000A4D54 /* TankImage.swift */; };
@@ -75,6 +76,7 @@
 		724608302A338A18005EAC46 /* Dive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dive.swift; sourceTree = "<group>"; };
 		724608322A338C95005EAC46 /* DiveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCard.swift; sourceTree = "<group>"; };
 		7294EC742A5F5947003007EA /* GearEntryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearEntryTabView.swift; sourceTree = "<group>"; };
+		729912E92A686DE2001A19D6 /* DiveFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveFlag.swift; sourceTree = "<group>"; };
 		729EA1B12A67301D00410CCE /* KeyboardUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeyboardUtils.swift; path = DeepDive/Support/KeyboardUtils.swift; sourceTree = SOURCE_ROOT; };
 		72AEFCE72A3B9EC200DEA260 /* NewDiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDiveView.swift; sourceTree = "<group>"; };
 		72B6E6122A5CBC3A000A4D54 /* TankImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankImage.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				724608042A338A03005EAC46 /* ContentView.swift */,
+				729912E92A686DE2001A19D6 /* DiveFlag.swift */,
 				72044B812A44C317006BAEF3 /* SetDiveLocation.swift */,
 				72F1FB722A4DF42B001B143C /* DiveListView.swift */,
 				720F664E2A3A2450001B6446 /* UpdateDiveView.swift */,
@@ -339,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				729912EA2A686DE2001A19D6 /* DiveFlag.swift in Sources */,
 				72F1FB732A4DF42B001B143C /* DiveListView.swift in Sources */,
 				720F66492A3909BC001B6446 /* SampleDives.swift in Sources */,
 				72044B822A44C317006BAEF3 /* SetDiveLocation.swift in Sources */,

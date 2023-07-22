@@ -16,16 +16,20 @@ struct DiveSite: Identifiable {
 }
 
 struct DiveMapView: View {
+    let image = Image("DiveFlagImage")
+    @Environment(\.displayScale) var displayScale
+    
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \.date, order: .reverse)
-    
     var dives: [Dive]
+    
     var body: some View {
         NavigationStack {
             VStack {
                 Map(){
                     ForEach(dives) { dive in
-                        Marker(dive.name, coordinate: CLLocationCoordinate2D(latitude: dive.latitude, longitude: dive.longitude))
+                        Marker(dive.name, systemImage: "flag" , coordinate: CLLocationCoordinate2D(latitude: dive.latitude, longitude: dive.longitude))
+                            .tint(.teal)
                     }
                 }
                 Spacer()

@@ -48,6 +48,7 @@ struct NewDiveView: View {
     @State private var latitutde: Double = 0.0
     
     @State private var note: String = ""
+    @State private var stampImage: Image?
     
     // TODO: Notes and stamp section
     
@@ -76,7 +77,7 @@ struct NewDiveView: View {
                         Text("Location")
                     }
                 }
-                DiveNotesEntryView(note: $note)
+                DiveNotesEntryView(note: $note, stampImage: $stampImage)
                     .tabItem {
                         HStack{
                             Image(systemName: "doc.richtext")
@@ -97,7 +98,7 @@ struct NewDiveView: View {
         }
     }
     public func newDive() {
-        let newDive = Dive(name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, longitude: longitude, latitude: latitutde, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix, tankSize: tankSize, tankSizeUnit: tankSizeUnit, visibility: visibility, visibilityUnit: visibilityUnit, diveType: diveType, night: night, boatDive: boatDive, saltWater: saltWater, airTemp: airTemp, waterTemp: waterTemp, tempUnit: tempUnit, weight: weight, weightUnit: weightUnit, note: note)
+        let newDive = Dive(name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, longitude: longitude, latitude: latitutde, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix, tankSize: tankSize, tankSizeUnit: tankSizeUnit, visibility: visibility, visibilityUnit: visibilityUnit, diveType: diveType, night: night, boatDive: boatDive, saltWater: saltWater, airTemp: airTemp, waterTemp: waterTemp, tempUnit: tempUnit, weight: weight, weightUnit: weightUnit, note: note, stampImage: stampImage)
         modelContext.insert(newDive)
         print("New Dive Entry")
     }
