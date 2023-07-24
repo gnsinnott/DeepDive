@@ -27,7 +27,7 @@ struct DiveView: View {
                             diveLocationView(dive: dive)
                         }
                         else {
-                            notesView()
+                            notesView(dive: dive)
                         }
                     }
                 }
@@ -161,12 +161,15 @@ struct diveLocationTextView: View {
 }
 
 struct notesView: View {
+    var dive: Dive
     var body: some View {
-        dive.stampImage
-        Rectangle()
-            .fill(Color.purple)
-            .frame(height: 100)
-            .padding()
+        if let data = try? Data(contentsOf: getDocumentsDirectory().appendingPathComponent(dive.id.uuidString)), let loaded = UIImage(data: data) {
+            HStack {
+                Image(uiImage: loaded)
+                    .resizable()
+                    .frame(height: 350)
+            }
+        }
     }
 }
 

@@ -10,12 +10,16 @@ import PhotosUI
 
 struct DiveNotesEntryView: View {
     var placeHolder = "Write a note about your dive."
+    var id: UUID
     @Binding public var note: String
     @Binding public var stampImage: Image?
+    
+    @StateObject private var imagePicker = ImagePicker()
+    
     var body: some View {
        
         NavigationStack{
-            PhotoPickerView(stampImage: stampImage)
+            PhotoPickerView(id: id.uuidString)
             TextEditor(text: $note)
                 .foregroundColor(self.note == placeHolder ? .gray : .primary)
                 .onTapGesture {
@@ -37,6 +41,7 @@ struct DiveNotesEntryView: View {
 struct PhotoPickerView: View {
     @State private var stampItem: PhotosPickerItem?
     @State public var stampImage: Image?
+    var id: String
     
     var body: some View {
         VStack {
@@ -53,7 +58,8 @@ struct PhotoPickerView: View {
             Task {
                 if let data = try? await stampItem?.loadTransferable(type: Data.self) {
                     if let uiImage = UIImage(data: data) {
-                        stampImage = Image(uiImage: uiImage)
+                        self.stampImage = Image(uiImage: uiImage)
+                        saveStampImage(stamp: uiImage, id: id)
                         return
                     }
                 }
@@ -62,6 +68,7 @@ struct PhotoPickerView: View {
         }
     }
 }
+
 
 //#Preview {
 //    DiveNotesEntryView(note: "")

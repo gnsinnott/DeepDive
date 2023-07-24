@@ -16,6 +16,8 @@ struct NewDiveView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     
+    let id = UUID()
+    
     @State private var name: String = ""
     @State private var date: Date = Date()
     @State private var bottomTime: Int = 0
@@ -77,7 +79,7 @@ struct NewDiveView: View {
                         Text("Location")
                     }
                 }
-                DiveNotesEntryView(note: $note, stampImage: $stampImage)
+                DiveNotesEntryView(id: id, note: $note, stampImage: $stampImage)
                     .tabItem {
                         HStack{
                             Image(systemName: "doc.richtext")
@@ -98,7 +100,7 @@ struct NewDiveView: View {
         }
     }
     public func newDive() {
-        let newDive = Dive(name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, longitude: longitude, latitude: latitutde, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix, tankSize: tankSize, tankSizeUnit: tankSizeUnit, visibility: visibility, visibilityUnit: visibilityUnit, diveType: diveType, night: night, boatDive: boatDive, saltWater: saltWater, airTemp: airTemp, waterTemp: waterTemp, tempUnit: tempUnit, weight: weight, weightUnit: weightUnit, note: note, stampImage: stampImage)
+        let newDive = Dive(id: id, name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, longitude: longitude, latitude: latitutde, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix, tankSize: tankSize, tankSizeUnit: tankSizeUnit, visibility: visibility, visibilityUnit: visibilityUnit, diveType: diveType, night: night, boatDive: boatDive, saltWater: saltWater, airTemp: airTemp, waterTemp: waterTemp, tempUnit: tempUnit, weight: weight, weightUnit: weightUnit, note: note)
         modelContext.insert(newDive)
         print("New Dive Entry")
     }
