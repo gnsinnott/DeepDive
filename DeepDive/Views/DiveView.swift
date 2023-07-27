@@ -19,49 +19,66 @@ struct DiveView: View {
                 TabView(selection: $index) {
                     ForEach((0..<4), id: \.self) {index in
                         if (index == 0){
-                            diveOverviewCard(dive: dive)
-                        } else if (index == 1){
-                            gearViewCard(dive: dive)
-                        }
-                        else if (index == 2) {
-                            diveLocationView(dive: dive)
-                        }
-                        else {
-                            notesView(dive: dive)
-                        }
-                    }
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                .frame(height: 350)
-                
-                TabView(selection: $index) {
-                    ForEach((0..<4), id: \.self) {index in
-                        if (index == 0){
+                        
                             VStack {
+                                diveOverviewCard(dive: dive)
                                 diveOverviewText(dive: dive)
-                                Spacer()
                             }
+                            
                         } else if (index == 1){
-                            VStack {
+                            VStack{
+                                gearViewCard(dive: dive)
                                 gearViewText(dive: dive)
                                 Spacer()
                             }
                         }
                         else if (index == 2) {
-                            VStack {
+                            VStack{
+                                diveLocationView(dive: dive)
                                 diveLocationTextView(dive: dive)
-                                Spacer()
                             }
                         }
                         else {
-                            VStack {
+                            VStack{
+                                notesView(dive: dive)
                                 notesViewText(dive: dive)
-                                Spacer()
                             }
                         }
                     }
-                    
                 }
+                .tabViewStyle(.page)
+                .indexViewStyle(.page(backgroundDisplayMode: .always))
+//                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+//                .frame(height: 350)
+                
+//                TabView(selection: $index) {
+//                    ForEach((0..<4), id: \.self) {index in
+//                        if (index == 0){
+//                            VStack {
+//                                diveOverviewText(dive: dive)
+//                                Spacer()
+//                            }
+//                        } else if (index == 1){
+//                            VStack {
+//                                gearViewText(dive: dive)
+//                                Spacer()
+//                            }
+//                        }
+//                        else if (index == 2) {
+//                            VStack {
+//                                diveLocationTextView(dive: dive)
+//                                Spacer()
+//                            }
+//                        }
+//                        else {
+//                            VStack {
+//                                notesViewText(dive: dive)
+//                                Spacer()
+//                            }
+//                        }
+//                    }
+//                    
+//                }
             }
 //            .toolbar(.hidden, for: .automatic) // Hide tab bar for all TabViews in current view
         }
@@ -144,6 +161,7 @@ struct diveLocationView: View {
                 .foregroundColor(Color.white.opacity(0.01))
             .padding()
         }
+        .frame(height: 300)
     }
 }
 
