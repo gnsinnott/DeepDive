@@ -48,41 +48,8 @@ struct DiveView: View {
                 }
                 .tabViewStyle(.page)
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
-//                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-//                .frame(height: 350)
-                
-//                TabView(selection: $index) {
-//                    ForEach((0..<4), id: \.self) {index in
-//                        if (index == 0){
-//                            VStack {
-//                                diveOverviewText(dive: dive)
-//                                Spacer()
-//                            }
-//                        } else if (index == 1){
-//                            VStack {
-//                                gearViewText(dive: dive)
-//                                Spacer()
-//                            }
-//                        }
-//                        else if (index == 2) {
-//                            VStack {
-//                                diveLocationTextView(dive: dive)
-//                                Spacer()
-//                            }
-//                        }
-//                        else {
-//                            VStack {
-//                                notesViewText(dive: dive)
-//                                Spacer()
-//                            }
-//                        }
-//                    }
-//                    
-//                }
             }
-//            .toolbar(.hidden, for: .automatic) // Hide tab bar for all TabViews in current view
         }
-//        .toolbar(.hidden, for: .automatic) // Hide tab bar for all TabViews in current view
     }
 }
 
@@ -125,7 +92,10 @@ struct gearViewCard: View {
                 .fill(Color.blue)
                 .frame(height: 350)
                 .padding()
-            TankImage(start: dive.startPressure, end: dive.endPressure, airType: Dive.airMixFromId(airmix: dive.airMix), tankSize: dive.tankSize, tankSizeUnit: dive.tankSizeUnit)
+            HStack(spacing: 60) {
+                TankImage(start: dive.startPressure, end: dive.endPressure, airType: Dive.airMixFromId(airmix: dive.airMix), tankSize: dive.tankSize, tankSizeUnit: dive.tankSizeUnit)
+                WeightImage(weight: dive.weight, unit: dive.weightUnit)
+            }
         }
     }
 }
@@ -152,16 +122,11 @@ struct gearViewText: View {
 struct diveLocationView: View {
     var dive: Dive
     var body: some View {
-        ZStack {
-            Map(){
-                Marker(dive.name, systemImage: "flag" , coordinate: CLLocationCoordinate2D(latitude: dive.latitude, longitude: dive.longitude))
-            }
-            .padding()
-            Rectangle()
-                .foregroundColor(Color.white.opacity(0.01))
-            .padding()
+        Map(){
+            Marker(dive.name, systemImage: "flag" , coordinate: CLLocationCoordinate2D(latitude: dive.latitude, longitude: dive.longitude))
         }
-        .frame(height: 300)
+//        .padding()
+        .frame(height: 350)
     }
 }
 

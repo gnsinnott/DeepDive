@@ -26,6 +26,7 @@
 		724608242A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608232A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift */; };
 		724608312A338A18005EAC46 /* Dive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608302A338A18005EAC46 /* Dive.swift */; };
 		724608332A338C95005EAC46 /* DiveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608322A338C95005EAC46 /* DiveCard.swift */; };
+		7277A28D2A72DCB000985FC5 /* WeightImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7277A28C2A72DCB000985FC5 /* WeightImage.swift */; };
 		7294EC752A5F5947003007EA /* GearEntryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7294EC742A5F5947003007EA /* GearEntryTabView.swift */; };
 		729912EA2A686DE2001A19D6 /* DiveFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729912E92A686DE2001A19D6 /* DiveFlag.swift */; };
 		729924772A6F03E200F504CA /* DiveGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729924762A6F03E200F504CA /* DiveGraph.swift */; };
@@ -81,6 +82,7 @@
 		724608232A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDiveUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		724608302A338A18005EAC46 /* Dive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dive.swift; sourceTree = "<group>"; };
 		724608322A338C95005EAC46 /* DiveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCard.swift; sourceTree = "<group>"; };
+		7277A28C2A72DCB000985FC5 /* WeightImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightImage.swift; sourceTree = "<group>"; };
 		7294EC742A5F5947003007EA /* GearEntryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearEntryTabView.swift; sourceTree = "<group>"; };
 		729912E92A686DE2001A19D6 /* DiveFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveFlag.swift; sourceTree = "<group>"; };
 		729924762A6F03E200F504CA /* DiveGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveGraph.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				72B6E6122A5CBC3A000A4D54 /* TankImage.swift */,
 				72F1FB702A4CC2B4001B143C /* ToggleStyles.swift */,
 				720F664E2A3A2450001B6446 /* UpdateDiveView.swift */,
+				7277A28C2A72DCB000985FC5 /* WeightImage.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				724608332A338C95005EAC46 /* DiveCard.swift in Sources */,
 				724608052A338A03005EAC46 /* ContentView.swift in Sources */,
 				7230EDC92A65BD790053BB0B /* DiveMapView.swift in Sources */,
+				7277A28D2A72DCB000985FC5 /* WeightImage.swift in Sources */,
 				724608312A338A18005EAC46 /* Dive.swift in Sources */,
 				72D6D9B42A38D9BD00482547 /* PreviewSampleData.swift in Sources */,
 				7246080C2A338A04005EAC46 /* Item.swift in Sources */,
