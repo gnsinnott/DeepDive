@@ -15,7 +15,7 @@ struct NewDiveView: View {
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    
+    @AppStorage("defaultUnit") var defaultUnit: Bool?
     let id = UUID()
     
     @State private var name: String = ""
@@ -52,7 +52,6 @@ struct NewDiveView: View {
     @State private var note: String = ""
     @State private var stampImage: Image?
     
-    // TODO: Notes and stamp section
     
     
     var body: some View {
@@ -97,6 +96,17 @@ struct NewDiveView: View {
                 }
             }
             .navigationTitle("New Dive Entry")
+        }
+        .onAppear(){
+            if (defaultUnit != nil){
+                depthUnit = defaultUnit!
+                visibilityUnit = defaultUnit!
+                tankSizeUnit = defaultUnit!
+                pressureUnit = defaultUnit!
+                weightUnit = defaultUnit!
+                tempUnit = defaultUnit!
+                
+            }
         }
     }
     public func newDive() {

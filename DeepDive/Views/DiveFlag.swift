@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct DiveFlag: View {
+    var width = 100.0
     var body: some View {
-        let width = 400.0
-        let height = width
+        let height = 50.0
         ZStack {
             Rectangle()
                 .fill(.red)
@@ -18,11 +18,11 @@ struct DiveFlag: View {
             Rectangle()
                 .fill(.white)
                 .frame(width: sqrt(pow(width,2)+pow(height,2)), height: (height * 0.25))
-                .rotationEffect(.degrees(45))
-            Rectangle()
-                .stroke(lineWidth: width/20)
-                .fill(.red)
-                .frame(width: width, height: height)
+                .rotationEffect(.degrees(30))
+//            Rectangle()
+//                .stroke(lineWidth: width/20)
+//                .fill(.red)
+//                .frame(width: width, height: height)
                 
         }
         .frame(width: width, height: height)

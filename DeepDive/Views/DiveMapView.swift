@@ -20,8 +20,7 @@ struct DiveMapView: View {
     @Environment(\.displayScale) var displayScale
     
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \.date, order: .reverse)
-    var dives: [Dive]
+    @Query(sort: [SortDescriptor(\Dive.date)]) var dives: [Dive]
     
     var body: some View {
         NavigationStack {

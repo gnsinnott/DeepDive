@@ -11,8 +11,9 @@ import MapKit
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: \.date, order: .reverse)
-    var dives: [Dive]
+    @Query(sort: [SortDescriptor(\Dive.date)]) var dives: [Dive]
+//    @Query(sort: \Dive.date, order: .reverse) var dives: [Dive]
+    
     
     var body: some View {
         NavigationView {
@@ -24,14 +25,14 @@ struct ContentView: View {
                             Text("Dives")
                         }
                     }
-               DiveMapView()
+                DiveMapView()
                     .tabItem{
                         HStack {
                             Image(systemName: "globe")
                             Text("Map")
                         }
                     }
-                Text("Settings")
+                SettingsView()
                     .tabItem {
                         HStack {
                             Image(systemName: "gear")
@@ -39,12 +40,12 @@ struct ContentView: View {
                         }
                     }
             }
-            .toolbar {
-                NavigationLink(
-                    destination: NewDiveView(), label: {
-                        Label("New Dive", systemImage: "plus")
-                    })
-            }
+//            .toolbar {
+//                NavigationLink(
+//                    destination: NewDiveView(), label: {
+//                        Label("New Dive", systemImage: "plus")
+//                    })
+//            }
         }
     }
 }

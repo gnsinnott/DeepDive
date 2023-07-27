@@ -11,6 +11,7 @@
 		720F66492A3909BC001B6446 /* SampleDives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F66482A3909BC001B6446 /* SampleDives.swift */; };
 		720F664F2A3A2450001B6446 /* UpdateDiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F664E2A3A2450001B6446 /* UpdateDiveView.swift */; };
 		721A76B32A4E2941001EC4DF /* DiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721A76B22A4E2941001EC4DF /* DiveView.swift */; };
+		72202B372A71C1C100DBE6E2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72202B362A71C1C100DBE6E2 /* SettingsView.swift */; };
 		7230EDC92A65BD790053BB0B /* DiveMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230EDC82A65BD790053BB0B /* DiveMapView.swift */; };
 		7230EDCB2A685A230053BB0B /* DiveNotesEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230EDCA2A685A230053BB0B /* DiveNotesEntryView.swift */; };
 		723A0D152A6DB7BB0036C52E /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 723A0D142A6DB7BB0036C52E /* ImagePicker.swift */; };
@@ -27,6 +28,7 @@
 		724608332A338C95005EAC46 /* DiveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608322A338C95005EAC46 /* DiveCard.swift */; };
 		7294EC752A5F5947003007EA /* GearEntryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7294EC742A5F5947003007EA /* GearEntryTabView.swift */; };
 		729912EA2A686DE2001A19D6 /* DiveFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729912E92A686DE2001A19D6 /* DiveFlag.swift */; };
+		729924772A6F03E200F504CA /* DiveGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729924762A6F03E200F504CA /* DiveGraph.swift */; };
 		729EA1B22A67301D00410CCE /* KeyboardUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729EA1B12A67301D00410CCE /* KeyboardUtils.swift */; };
 		72AEFCE82A3B9EC200DEA260 /* NewDiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AEFCE72A3B9EC200DEA260 /* NewDiveView.swift */; };
 		72B6E6132A5CBC3A000A4D54 /* TankImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6E6122A5CBC3A000A4D54 /* TankImage.swift */; };
@@ -59,6 +61,7 @@
 		720F66482A3909BC001B6446 /* SampleDives.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleDives.swift; sourceTree = "<group>"; };
 		720F664E2A3A2450001B6446 /* UpdateDiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDiveView.swift; sourceTree = "<group>"; };
 		721A76B22A4E2941001EC4DF /* DiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveView.swift; sourceTree = "<group>"; };
+		72202B362A71C1C100DBE6E2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7230EDC82A65BD790053BB0B /* DiveMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveMapView.swift; sourceTree = "<group>"; };
 		7230EDCA2A685A230053BB0B /* DiveNotesEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveNotesEntryView.swift; sourceTree = "<group>"; };
 		723A0D142A6DB7BB0036C52E /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -80,6 +83,7 @@
 		724608322A338C95005EAC46 /* DiveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCard.swift; sourceTree = "<group>"; };
 		7294EC742A5F5947003007EA /* GearEntryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearEntryTabView.swift; sourceTree = "<group>"; };
 		729912E92A686DE2001A19D6 /* DiveFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveFlag.swift; sourceTree = "<group>"; };
+		729924762A6F03E200F504CA /* DiveGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveGraph.swift; sourceTree = "<group>"; };
 		729EA1B12A67301D00410CCE /* KeyboardUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeyboardUtils.swift; path = DeepDive/Support/KeyboardUtils.swift; sourceTree = SOURCE_ROOT; };
 		72AEFCE72A3B9EC200DEA260 /* NewDiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDiveView.swift; sourceTree = "<group>"; };
 		72B6E6122A5CBC3A000A4D54 /* TankImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankImage.swift; sourceTree = "<group>"; };
@@ -200,18 +204,20 @@
 		72D6D9B62A38DADD00482547 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				723A0D142A6DB7BB0036C52E /* ImagePicker.swift */,
 				724608042A338A03005EAC46 /* ContentView.swift */,
-				729912E92A686DE2001A19D6 /* DiveFlag.swift */,
-				72F1FB722A4DF42B001B143C /* DiveListView.swift */,
-				720F664E2A3A2450001B6446 /* UpdateDiveView.swift */,
-				7230EDC82A65BD790053BB0B /* DiveMapView.swift */,
-				729EA1B12A67301D00410CCE /* KeyboardUtils.swift */,
-				72F1FB702A4CC2B4001B143C /* ToggleStyles.swift */,
-				721A76B22A4E2941001EC4DF /* DiveView.swift */,
-				72C7F53A2A5DF74B0089B0A7 /* DiveLogTableCard.swift */,
-				72B6E6122A5CBC3A000A4D54 /* TankImage.swift */,
 				724608322A338C95005EAC46 /* DiveCard.swift */,
+				729912E92A686DE2001A19D6 /* DiveFlag.swift */,
+				729924762A6F03E200F504CA /* DiveGraph.swift */,
+				72202B362A71C1C100DBE6E2 /* SettingsView.swift */,
+				72F1FB722A4DF42B001B143C /* DiveListView.swift */,
+				72C7F53A2A5DF74B0089B0A7 /* DiveLogTableCard.swift */,
+				7230EDC82A65BD790053BB0B /* DiveMapView.swift */,
+				721A76B22A4E2941001EC4DF /* DiveView.swift */,
+				723A0D142A6DB7BB0036C52E /* ImagePicker.swift */,
+				729EA1B12A67301D00410CCE /* KeyboardUtils.swift */,
+				72B6E6122A5CBC3A000A4D54 /* TankImage.swift */,
+				72F1FB702A4CC2B4001B143C /* ToggleStyles.swift */,
+				720F664E2A3A2450001B6446 /* UpdateDiveView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -368,8 +374,10 @@
 				7246080C2A338A04005EAC46 /* Item.swift in Sources */,
 				720F664F2A3A2450001B6446 /* UpdateDiveView.swift in Sources */,
 				72F1FB712A4CC2B4001B143C /* ToggleStyles.swift in Sources */,
+				729924772A6F03E200F504CA /* DiveGraph.swift in Sources */,
 				723A0D152A6DB7BB0036C52E /* ImagePicker.swift in Sources */,
 				72B6E6132A5CBC3A000A4D54 /* TankImage.swift in Sources */,
+				72202B372A71C1C100DBE6E2 /* SettingsView.swift in Sources */,
 				721A76B32A4E2941001EC4DF /* DiveView.swift in Sources */,
 				729EA1B22A67301D00410CCE /* KeyboardUtils.swift in Sources */,
 				72AEFCE82A3B9EC200DEA260 /* NewDiveView.swift in Sources */,

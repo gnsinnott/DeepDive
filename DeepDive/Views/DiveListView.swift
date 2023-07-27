@@ -21,6 +21,12 @@ struct diveListView: View {
                     }
                     .buttonStyle(.plain)
                 }
+                .toolbar {
+                    NavigationLink(
+                        destination: NewDiveView(), label: {
+                            Label("New Dive", systemImage: "plus")
+                        })
+                }
                 .navigationTitle("Your Dives")
             }
         }
