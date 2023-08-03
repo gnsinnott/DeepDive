@@ -20,6 +20,8 @@ struct SetDiveLocationView: View {
     @State private var visibleRegion: MKCoordinateRegion?
     @State private var diveSite = Marker("Dive Name", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 10))
     
+    
+    @Binding public var location: String
     @Binding public var boat: Bool
     @Binding public var saltWater: Bool
     
@@ -64,6 +66,11 @@ struct SetDiveLocationView: View {
                             TextField("Latitude:", value:$latitude, format: .number)
                                 .focused($focusedField, equals: "latitude")
                                 .keyboardType(.numbersAndPunctuation)
+                                .onChange(of: latitude) {oldValue, newValue in
+                                    if (newValue > 180 || newValue < -180) {
+                                        latitude = oldValue
+                                    }
+                                }
                         }
                         HStack {
                             Text("Longitude")
@@ -71,6 +78,11 @@ struct SetDiveLocationView: View {
                             TextField("Longitude:", value:$longitude, format: .number)
                                 .focused($focusedField, equals: "longitude")
                                 .keyboardType(.numbersAndPunctuation)
+                                .onChange(of: longitude) {oldValue, newValue in
+                                    if (newValue > 180 || newValue < -180) {
+                                        longitude = oldValue
+                                    }
+                                }
                         }
                     }
                     Button("Set") {
@@ -84,6 +96,12 @@ struct SetDiveLocationView: View {
                 Text("Dive Coordinates: \(latitude, specifier: "%.5f"), \(longitude, specifier: "%.5f")")
             }
             Section(header: Text("Location Details")) {
+                HStack{
+                    Text("Location Name:")
+                        .foregroundStyle(.secondary)
+                    TextField("Location Name", text: $location)
+                }
+                
                 Toggle(boat ? "Boat Dive 🛥️" : "Shore Dive 🏝️", isOn: $boat)
                     .tint(Color.blue)
                 Toggle(saltWater ? "Salt Water" : "Fresh Water", isOn: $saltWater)

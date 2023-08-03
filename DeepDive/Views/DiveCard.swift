@@ -18,7 +18,7 @@ struct DiveCard: View {
             VStack {
                 HStack {
                     VStack {
-                        Text("🤿 \(count): \(dive.name)")
+                        Text("🤿 \(dive.number): \(dive.name)")
                             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         Text(dive.location)
                     }

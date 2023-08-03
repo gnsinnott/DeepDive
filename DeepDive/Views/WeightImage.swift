@@ -11,16 +11,21 @@ struct WeightImage: View {
     var weight = 14
     var unit = false
     var body: some View {
-        VStack(spacing: 8){
-            ForEach((1...weight/(unit ? 2 : 4)), id: \.self) { index in
-                ZStack {
-                    Trapezoid(base: 40*Double(index)+20, top: 40*Double(index-1)+20, height: 25.0)
-                        .stroke(.gray, style: StrokeStyle(lineWidth: 4.0, lineCap: .round))
-                        .fill(.gray)
-                    .frame(width: 40*Double(index), height: 25)
+        if weight > 0 {
+            VStack(spacing: 8){
+                ForEach((1...weight/(unit ? 2 : 4)), id: \.self) { index in
+                    ZStack {
+                        Trapezoid(base: 40*Double(index)+20, top: 40*Double(index-1)+20, height: 25.0)
+                            .stroke(.gray, style: StrokeStyle(lineWidth: 4.0, lineCap: .round))
+                            .fill(.gray)
+                            .frame(width: 40*Double(index), height: 25)
+                    }
                 }
+                Text("\(weight) \(unit ? "kg" : "lb")")
             }
-            Text("\(weight) \(unit ? "kg" : "lb")")
+        }
+        else {
+            Text("No weight")
         }
     }
 }

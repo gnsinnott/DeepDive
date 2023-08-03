@@ -14,7 +14,7 @@ struct DiveView: View {
     var body: some View {
         Group {
             VStack{
-                Text(dive.name)
+                Text(" \(dive.name)")
                     .font(.largeTitle)
                 TabView(selection: $index) {
                     ForEach((0..<4), id: \.self) {index in
