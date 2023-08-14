@@ -9,6 +9,8 @@ import SwiftUI
 import MapKit
 
 struct DiveView: View {
+    @Environment(\.modelContext) private var modelContext
+    
     @State var index = 0
     var dive: Dive
     var body: some View {
@@ -19,7 +21,7 @@ struct DiveView: View {
                 TabView(selection: $index) {
                     ForEach((0..<4), id: \.self) {index in
                         if (index == 0){
-                        
+                            
                             VStack {
                                 diveOverviewCard(dive: dive)
                                 diveOverviewText(dive: dive)
@@ -50,6 +52,18 @@ struct DiveView: View {
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(role: .destructive) {
+                    delete()
+                } label: {
+                    Label("Delete", systemImage: "trash")
+                }
+            }
+        }
+    }
+    public func delete() {
+        modelContext.delete(dive)
     }
 }
 

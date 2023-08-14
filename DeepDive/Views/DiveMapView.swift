@@ -27,8 +27,21 @@ struct DiveMapView: View {
             VStack {
                 Map(){
                     ForEach(dives) { dive in
-                        Marker(dive.name, systemImage: "flag" , coordinate: CLLocationCoordinate2D(latitude: dive.latitude, longitude: dive.longitude))
-                            .tint(.teal)
+//                        Marker(dive.name, systemImage: "flag", coordinate: CLLocationCoordinate2D(latitude: dive.latitude, longitude: dive.longitude))
+//                            .tint(.teal)
+//                            .tag(dive.number)
+                        Annotation(dive.name, coordinate: CLLocationCoordinate2D(latitude: dive.latitude, longitude: dive.longitude)){
+                            NavigationLink(destination: DiveView(dive: dive)){
+                                Image(systemName: "flag.slash.fill")
+                                    .symbolEffect(.scale)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(.white, .red)
+                                    
+                                
+                            }
+                            
+                            
+                        }
                     }
                 }
                 Spacer()

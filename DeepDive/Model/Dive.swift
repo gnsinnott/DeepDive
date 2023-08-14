@@ -42,8 +42,6 @@ class Dive {
     var weight: Int
     var weightUnit: Bool
     var note: String
-//    var images: [Image]
-//    var stampImage: Image?
     
     init(id: UUID, number: Int, name: String, date: Date, bottomTime: Int, depth: Int, depthUnit: Bool, location: String, longitude: Double, latitude: Double, startPressure: Int, endPressure: Int, airUnit: Bool, airMix: AirMix, tankSize: Int, tankSizeUnit: Bool, visibility: Int, visibilityUnit: Bool, diveType: DiveType, night: Bool, boatDive: Bool, saltWater: Bool, airTemp: Double, waterTemp: Double, tempUnit: Bool, weight: Int, weightUnit: Bool, note: String){
         self.id = id

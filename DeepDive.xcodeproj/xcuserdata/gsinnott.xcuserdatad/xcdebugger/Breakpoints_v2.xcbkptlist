@@ -3,4 +3,115 @@
    uuid = "4BD0C08A-C0AD-48B4-BB74-559979D44CB9"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A80C509-7E0D-45BE-BB6D-269D0B9D4519"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeepDive/Views/DiveView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "4A80C509-7E0D-45BE-BB6D-269D0B9D4519 - 45eeda659e4847f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in DeepDive.notesView.body.getter : some"
+                  moduleName = "DeepDive"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gsinnott/Developer/DeepDive/DeepDive/Views/DiveView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "165"
+                  endingLineNumber = "165"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "4A80C509-7E0D-45BE-BB6D-269D0B9D4519 - 24444730d06583bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeepDive.notesView.body.getter : some"
+                  moduleName = "DeepDive"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gsinnott/Developer/DeepDive/DeepDive/Views/DiveView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "165"
+                  endingLineNumber = "165"
+                  offsetFromSymbolStart = "764">
+               </Location>
+               <Location
+                  uuid = "4A80C509-7E0D-45BE-BB6D-269D0B9D4519 - 45eeda659e4847f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in DeepDive.notesView.body.getter : some"
+                  moduleName = "DeepDive"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gsinnott/Developer/DeepDive/DeepDive/Views/DiveView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "165"
+                  endingLineNumber = "165"
+                  offsetFromSymbolStart = "132">
+               </Location>
+               <Location
+                  uuid = "4A80C509-7E0D-45BE-BB6D-269D0B9D4519 - 24444730d06583dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DeepDive.notesView.body.getter : some"
+                  moduleName = "DeepDive"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gsinnott/Developer/DeepDive/DeepDive/Views/DiveView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "852">
+               </Location>
+               <Location
+                  uuid = "4A80C509-7E0D-45BE-BB6D-269D0B9D4519 - 45eeda659e484796"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.frame(width: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, height: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0 in DeepDive.notesView.body.getter : some"
+                  moduleName = "DeepDive"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gsinnott/Developer/DeepDive/DeepDive/Views/DiveView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "160">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "828E0235-2893-4A60-91CD-BDBAC617BB9A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DeepDive/Views/DiveView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

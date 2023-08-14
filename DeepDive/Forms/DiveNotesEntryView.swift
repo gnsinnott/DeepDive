@@ -63,7 +63,7 @@ struct PhotoPickerView: View {
                         return
                     }
                 }
-                print("Failed")
+                print("Failed to load image")
             }
         }
     }

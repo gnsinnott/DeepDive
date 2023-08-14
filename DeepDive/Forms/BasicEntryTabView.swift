@@ -87,16 +87,5 @@ struct basicEntryTabView: View{
                 }
             }
         }
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                Spacer()
-                Button() {
-                    hideKeyboard()
-                } label: {
-                    Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
-                }
-            }
-        }
-
     }
 }

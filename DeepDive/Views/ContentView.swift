@@ -11,8 +11,8 @@ import MapKit
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query(sort: [SortDescriptor(\Dive.date)]) var dives: [Dive]
-//    @Query(sort: \Dive.date, order: .reverse) var dives: [Dive]
+//    @Query(sort: [SortDescriptor(\Dive.date)]) var dives: [Dive]
+    @Query(sort: \Dive.date, order: .reverse) var dives: [Dive]
     
     
     var body: some View {
@@ -40,12 +40,6 @@ struct ContentView: View {
                         }
                     }
             }
-//            .toolbar {
-//                NavigationLink(
-//                    destination: NewDiveView(), label: {
-//                        Label("New Dive", systemImage: "plus")
-//                    })
-//            }
         }
     }
 }

@@ -94,6 +94,14 @@ struct NewDiveView: View {
                         dismiss()
                     }
                 }
+                ToolbarItemGroup(placement: .keyboard){
+                    Spacer()
+                    Button() {
+                        hideKeyboard()
+                    } label: {
+                        Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
+                    }
+                }
             }
             .navigationTitle("New Dive Entry")
         }
