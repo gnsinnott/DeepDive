@@ -19,12 +19,6 @@ struct basicEntryTabView: View{
     @Binding public var diveType: Dive.DiveType
     @Binding public var night: Bool
     
-    @FocusState private var focusedField: String?
-    @FocusState private var isFocused: Bool
-    
-    // TODO: First Dive number
-    // TODO: Running dive number
-    // TODO: Dive Number
     // TODO: Surface Interval - amount of time since last dive
     
     
@@ -32,7 +26,6 @@ struct basicEntryTabView: View{
         Form {
             Section(header: Text("Dive name")) {
                 TextField("Enter dive name here...", text: $name)
-                    .focused($focusedField, equals: "name")
             }
             Section(header: Text("Dive Date and Time")) {
                 DatePicker(
@@ -47,10 +40,9 @@ struct basicEntryTabView: View{
                 HStack {
                     Text("Depth:")
                         .foregroundStyle(.secondary)
-                    TextField("Enter depth", value: $depth, format: .number)
-                        .focused($isFocused)
+                    TextField("", value: $depth, formatter: Formatter.blankZeroFormat)
                         .keyboardType(.numberPad)
-                        
+                    
                     Picker("", selection: $depthUnit) {
                         Text("meters").tag(true)
                         Text("feet").tag(false)
@@ -59,8 +51,7 @@ struct basicEntryTabView: View{
                 HStack {
                     Text("Bottom Time:")
                         .foregroundStyle(.secondary)
-                    TextField("Enter bottom time", value: $bottomTime, format: .number)
-                        .focused($isFocused)
+                    TextField("", value: $bottomTime, formatter: Formatter.blankZeroFormat)
                         .keyboardType(.numberPad)
                     Text("minutes")
                         .foregroundStyle(.secondary)
@@ -68,24 +59,32 @@ struct basicEntryTabView: View{
                 HStack{
                     Text("Visbility:")
                         .foregroundStyle(.secondary)
-                    TextField("Enter visibility", value: $visibility, format: .number)
-                        .focused($isFocused)
+                    TextField("", value: $visibility, formatter: Formatter.blankZeroFormat)
                         .keyboardType(.numberPad)
                     Picker("", selection: $visibilityUnit) {
                         Text("meters").tag(true)
                         Text("feet").tag(false)
                     }
                 }
-                HStack{
-                    Text("Dive Type:")
-                        .foregroundStyle(.secondary)
-                    Picker("", selection: $diveType) {
-                        ForEach(Dive.DiveType.allCases) {option in
-                            Text(String(describing: option))
-                        }
+                
+                Picker("Dive Type", selection: $diveType) {
+                    ForEach(Dive.DiveType.allCases) {option in
+                        Text(String(describing: option))
                     }
                 }
             }
         }
+        .toolbar{
+            ToolbarItemGroup(placement: .keyboard){
+                Spacer()
+                Button() {
+                    print("On Basic Entry ")
+                    hideKeyboard()
+                } label: {
+                    Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
+                }
+            }
+        }
     }
+    
 }

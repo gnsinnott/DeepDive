@@ -10,7 +10,9 @@ import MapKit
 
 struct DiveView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
     
+    @State var presentDeleteAlert = false
     @State var index = 0
     var dive: Dive
     var body: some View {
@@ -55,15 +57,22 @@ struct DiveView: View {
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(role: .destructive) {
-                    delete()
+                    presentDeleteAlert = true
                 } label: {
                     Label("Delete", systemImage: "trash")
                 }
+                .alert("Delete dive \(dive.name)?", isPresented: $presentDeleteAlert, actions: {
+                    Button("Delete", role: .destructive, action: {
+                        delete()
+                    })
+                    Button("Cancel", role: .cancel, action: {})
+                })
             }
         }
     }
     public func delete() {
         modelContext.delete(dive)
+        dismiss()
     }
 }
 
@@ -139,7 +148,6 @@ struct diveLocationView: View {
         Map(){
             Marker(dive.name, systemImage: "flag" , coordinate: CLLocationCoordinate2D(latitude: dive.latitude, longitude: dive.longitude))
         }
-//        .padding()
         .frame(height: 350)
     }
 }

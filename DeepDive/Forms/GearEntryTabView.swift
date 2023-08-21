@@ -20,16 +20,11 @@ struct gearEntryTabView: View {
     @Binding public var weightUnit: Bool
     @Binding public var suit: Int
     
-    @FocusState private var focusedField: String?
-    @FocusState private var isFocused: Bool
-    
     var body: some View {
         Form{
             Section(header: Text("Air")) {
                 VStack {
                     HStack {
-                        Text("Air Type:")
-                            .foregroundStyle(.secondary)
                         Picker("", selection: $airMix) {
                             ForEach(Dive.AirMix.allCases) {option in
                                 Text(String(describing: option))
@@ -39,9 +34,7 @@ struct gearEntryTabView: View {
                     HStack{
                         Text("Tank Size:")
                             .foregroundStyle(.secondary)
-                        TextField("Enter tank size", value: $tankSize, format: .number)
-//                            .focused($isFocused)
-//                            .focused($focusedField, equals: "tank")
+                        TextField("", value: $tankSize, formatter: Formatter.blankZeroFormat)
                             .keyboardType(.numberPad)
                         Picker("", selection: $tankSizeUnit) {
                             Text("liters").tag(true)
@@ -53,15 +46,13 @@ struct gearEntryTabView: View {
                             HStack{
                                 Text("Starting Pressure:")
                                     .foregroundStyle(.secondary)
-                                TextField("Enter starting pressure", value: $startPressure, format: .number)
-                                    .focused($focusedField, equals: "start")
+                                TextField("", value: $startPressure, formatter: Formatter.blankZeroFormat)
                                     .keyboardType(.numberPad)
                             }
                             HStack{
                                 Text("Ending Pressure:")
                                     .foregroundStyle(.secondary)
-                                TextField("Enter ending pressure", value: $endPressure, format: .number)
-                                    .focused($focusedField, equals: "end")
+                                TextField("", value: $endPressure, formatter: Formatter.blankZeroFormat)
                                     .keyboardType(.numberPad)
                             }
                             
@@ -78,9 +69,8 @@ struct gearEntryTabView: View {
                     HStack{
                         Text("Weights: ")
                             .foregroundStyle(.secondary)
-                        TextField("Enter weight used", value: $weight, format: .number)
-                            .focused($focusedField, equals: "weight")
-                            .keyboardType(.numberPad)
+                        TextField("", value: $weight, formatter: Formatter.blankZeroFormat)
+                            .keyboardType(.decimalPad)
                         Picker("", selection: $weightUnit) {
                             Text("kg").tag(true)
                             Text("lb").tag(false)
@@ -89,12 +79,22 @@ struct gearEntryTabView: View {
                     HStack{
                         Text("Suit thickness")
                             .foregroundStyle(.secondary)
-                        TextField("Enter suit thickness", value: $suit, format: .number)
-                            .focused($focusedField, equals: "suit")
+                        TextField("", value: $suit, formatter: Formatter.blankZeroFormat)
                             .keyboardType(.numberPad)
                         Text("mm")
                             .foregroundStyle(.secondary)
                     }
+                }
+            }
+        }
+        .toolbar{
+            ToolbarItemGroup(placement: .keyboard){
+                Spacer()
+                Button() {
+                    print("On Gear Entry ")
+                    hideKeyboard()
+                } label: {
+                    Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
                 }
             }
         }

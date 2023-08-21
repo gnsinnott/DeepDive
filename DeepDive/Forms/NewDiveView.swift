@@ -52,7 +52,7 @@ struct NewDiveView: View {
     @State private var note: String = ""
     @State private var stampImage: Image?
     
-    
+    @State var presentSubmitAlert = false
     
     var body: some View {
         NavigationStack {
@@ -86,25 +86,48 @@ struct NewDiveView: View {
                         }
                     }
             }
+            .pickerStyle(.segmented)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Submit") {
-                        print("Submit pressed")
-                        newDive()
-                        dismiss()
+                        let empty = notEntered()
+                        if empty.isEmpty{
+                            print("Submit pressed")
+                            newDive()
+                            dismiss()
+                        }
+                        else {
+                            presentSubmitAlert = true
+                        }
+
                     }
-                }
-                ToolbarItemGroup(placement: .keyboard){
-                    Spacer()
-                    Button() {
-                        hideKeyboard()
-                    } label: {
-                        Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
-                    }
+                    .alert("Dive details missing", isPresented: $presentSubmitAlert, actions: {
+                        Button("Submit", action: {
+                            newDive()
+                            dismiss()
+                        })
+                        Button("Cancel", role: .cancel, action: {})
+                    },message: {
+                        let empty = notEntered()
+                        Text("Items Missing: \(empty)")
+                    })
+                    
                 }
             }
             .navigationTitle("New Dive Entry")
         }
+        .toolbar{
+            ToolbarItemGroup(placement: .keyboard){
+                Spacer()
+                Button() {
+                    print("Main From")
+                    hideKeyboard()
+                } label: {
+                    Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
+                }
+            }
+        }
+        .pickerStyle(.segmented)
         .onAppear(){
             if (defaultUnit != nil){
                 depthUnit = defaultUnit!
@@ -123,6 +146,42 @@ struct NewDiveView: View {
         diveNumber += 1
         print("New Dive Entry")
         print("New dive number \(diveNumber)")
+    }
+    
+    public func notEntered() -> String{
+        var empty = ""
+        if name == "" {
+            empty.append("Name, ")
+        }
+        if bottomTime == 0 {
+            empty.append("Bottom Time, ")
+        }
+        if depth == 0 {
+            empty.append("Depth, ")
+        }
+        if startPressure == 0 {
+            empty.append("Start Pressure, ")
+        }
+        if endPressure == 0 {
+            empty.append("End Pressure, ")
+        }
+        if tankSize == 0 {
+            empty.append("Tank Size, ")
+        }
+        if weight == 0 {
+            empty.append("Weight, ")
+        }
+        if visibility == 0 {
+            empty.append("Visibility, ")
+        }
+        if airTemp == 0 {
+            empty.append("Air Temp, ")
+        }
+        if waterTemp == 0 {
+            empty.append("Water Temp, ")
+        }
+        print(empty)
+        return String(empty.dropLast(2)) // Remove comma and space from end of string
     }
 }
 

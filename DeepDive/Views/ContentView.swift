@@ -11,7 +11,6 @@ import MapKit
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-//    @Query(sort: [SortDescriptor(\Dive.date)]) var dives: [Dive]
     @Query(sort: \Dive.date, order: .reverse) var dives: [Dive]
     
     

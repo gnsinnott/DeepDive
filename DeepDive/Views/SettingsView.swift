@@ -26,7 +26,7 @@ struct SettingsView: View {
                     Text("feet").tag(false)
                         }
                 .pickerStyle(.segmented)
-                Text("Current Dive Number: \(diveNumber)")
+                Text("Next Dive Number: \(diveNumber)")
                 Button("Change Dive Number"){
                     presentAlert = true
                 }

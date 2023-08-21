@@ -25,8 +25,6 @@ struct SetDiveLocationView: View {
     @Binding public var boat: Bool
     @Binding public var saltWater: Bool
     
-    @FocusState private var focusedField: String?
-    
     @Binding public var waterTemp: Double
     @Binding public var airTemp: Double
     @Binding public var tempUnit: Bool
@@ -64,7 +62,6 @@ struct SetDiveLocationView: View {
                             Text("Latitude")
                                 .foregroundStyle(.secondary)
                             TextField("Latitude:", value:$latitude, format: .number)
-                                .focused($focusedField, equals: "latitude")
                                 .keyboardType(.numbersAndPunctuation)
                                 .onChange(of: latitude) {oldValue, newValue in
                                     if (newValue > 180 || newValue < -180) {
@@ -76,7 +73,6 @@ struct SetDiveLocationView: View {
                             Text("Longitude")
                                 .foregroundStyle(.secondary)
                             TextField("Longitude:", value:$longitude, format: .number)
-                                .focused($focusedField, equals: "longitude")
                                 .keyboardType(.numbersAndPunctuation)
                                 .onChange(of: longitude) {oldValue, newValue in
                                     if (newValue > 180 || newValue < -180) {
@@ -99,9 +95,8 @@ struct SetDiveLocationView: View {
                 HStack{
                     Text("Location Name:")
                         .foregroundStyle(.secondary)
-                    TextField("Location Name", text: $location)
+                    TextField("", text: $location)
                 }
-                
                 Toggle(boat ? "Boat Dive 🛥️" : "Shore Dive 🏝️", isOn: $boat)
                     .tint(Color.blue)
                 Toggle(saltWater ? "Salt Water" : "Fresh Water", isOn: $saltWater)
@@ -113,18 +108,29 @@ struct SetDiveLocationView: View {
                         HStack{
                             Text("Air")
                                 .foregroundStyle(.secondary)
-                            TextField("Enter air temperature", value: $airTemp, format: .number).keyboardType(.decimalPad)
+                            TextField("", value: $airTemp, format: .number).keyboardType(.decimalPad)
                         }
                         HStack{
                             Text("Water")
                                 .foregroundStyle(.secondary)
-                            TextField("Enter water temperature", value: $waterTemp, format: .number).keyboardType(.decimalPad)
+                            TextField("", value: $waterTemp, format: .number).keyboardType(.decimalPad)
                         }
                     }
                     Picker("", selection: $tempUnit) {
                         Text("Celcius").tag(true)
                         Text("Farenheit").tag(false)
                     }
+                }
+            }
+        }
+        .toolbar{
+            ToolbarItemGroup(placement: .keyboard){
+                Spacer()
+                Button() {
+                    print("On Dive Location Entry ")
+                    hideKeyboard()
+                } label: {
+                    Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
                 }
             }
         }

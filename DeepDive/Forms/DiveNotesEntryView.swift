@@ -21,10 +21,28 @@ struct DiveNotesEntryView: View {
         NavigationStack{
             PhotoPickerView(id: id.uuidString)
             TextEditor(text: $note)
+                .textEditorStyle(.automatic)
+                .border(.teal)
                 .foregroundColor(self.note == placeHolder ? .gray : .primary)
                 .onTapGesture {
                     if self.note == placeHolder {
                         self.note = ""
+                    }
+                }
+                .toolbar{
+                    ToolbarItemGroup(placement: .keyboard){
+                        Spacer()
+                        Button() {
+                            print("On Note Entry ")
+                            print(note)
+                            if note == "" {
+                                print("Note is emtpy")
+                                note = placeHolder
+                            }
+                            hideKeyboard()
+                        } label: {
+                            Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
+                        }
                     }
                 }
                 .padding(.horizontal)
@@ -45,14 +63,13 @@ struct PhotoPickerView: View {
     
     var body: some View {
         VStack {
-            PhotosPicker("Select dive shop stamp", selection: $stampItem, matching: .images)
-            
             if let stampImage {
                 stampImage
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 300, height: 300)
+                    .frame(width: 200, height: 200)
             }
+            PhotosPicker(stampImage != nil ? "Select dive shop stamp" : "Change dive shop stamp", selection: $stampItem, matching: .images)
         }
         .onChange(of: stampItem) {
             Task {
@@ -68,8 +85,3 @@ struct PhotoPickerView: View {
         }
     }
 }
-
-
-//#Preview {
-//    DiveNotesEntryView(note: "")
-//}
