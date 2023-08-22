@@ -92,8 +92,8 @@ extension Dive {
             return self
         }
         case Air
-        case Nitrox32
-        case Nitrox36
+        case Nitrox
+//        case Nitrox36
         case Trimix
         case Heliox
     }
@@ -101,10 +101,10 @@ extension Dive {
     static func airMixFromId(airmix: AirMix) -> String {
         if (airmix == AirMix.Air){
             return "Air"
-        } else if (airmix == AirMix.Nitrox32) {
-            return "Nitrox32"
-        } else if (airmix == AirMix.Nitrox36) {
-            return "Nitrox36"
+        } else if (airmix == AirMix.Nitrox) {
+            return "Nitrox"
+//        } else if (airmix == AirMix.Nitrox36) {
+//            return "Nitrox36"
         } else if (airmix == AirMix.Trimix) {
             return "Trimix"
         } else {

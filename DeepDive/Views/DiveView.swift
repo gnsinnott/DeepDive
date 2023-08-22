@@ -131,7 +131,7 @@ struct gearViewText: View {
         let pressureUnitText = (dive.airUnit) ? "bar" : "psi"
         ScrollView {
             VStack{
-                Text("Air Mix: \(Dive.airMixFromId(airmix: dive.airMix))")
+                Text("Tank Mix: \(Dive.airMixFromId(airmix: dive.airMix))")
                 Text("Tank Size: \(dive.tankSize) " + tankSizeUnitText)
                 Text("Weight: \(dive.weight) " + weightUnitText)
                 Text("Start: \(dive.startPressure) " + pressureUnitText)

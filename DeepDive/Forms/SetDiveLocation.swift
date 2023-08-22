@@ -20,7 +20,6 @@ struct SetDiveLocationView: View {
     @State private var visibleRegion: MKCoordinateRegion?
     @State private var diveSite = Marker("Dive Name", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 10))
     
-    
     @Binding public var location: String
     @Binding public var boat: Bool
     @Binding public var saltWater: Bool
@@ -108,12 +107,14 @@ struct SetDiveLocationView: View {
                         HStack{
                             Text("Air")
                                 .foregroundStyle(.secondary)
-                            TextField("", value: $airTemp, format: .number).keyboardType(.decimalPad)
+                            TextField("", value: $airTemp, formatter: Formatter.blankZeroFormat)
+                                .keyboardType(.decimalPad)
                         }
                         HStack{
                             Text("Water")
                                 .foregroundStyle(.secondary)
-                            TextField("", value: $waterTemp, format: .number).keyboardType(.decimalPad)
+                            TextField("", value: $waterTemp, formatter: Formatter.blankZeroFormat)
+                                .keyboardType(.decimalPad)
                         }
                     }
                     Picker("", selection: $tempUnit) {

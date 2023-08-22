@@ -21,7 +21,6 @@ struct DiveNotesEntryView: View {
         NavigationStack{
             PhotoPickerView(id: id.uuidString)
             TextEditor(text: $note)
-                .textEditorStyle(.automatic)
                 .border(.teal)
                 .foregroundColor(self.note == placeHolder ? .gray : .primary)
                 .onTapGesture {
@@ -69,7 +68,7 @@ struct PhotoPickerView: View {
                     .scaledToFit()
                     .frame(width: 200, height: 200)
             }
-            PhotosPicker(stampImage != nil ? "Select dive shop stamp" : "Change dive shop stamp", selection: $stampItem, matching: .images)
+            PhotosPicker(stampImage != nil ? "Change dive shop stamp" : "Select dive shop stamp", selection: $stampItem, matching: .images)
         }
         .onChange(of: stampItem) {
             Task {
