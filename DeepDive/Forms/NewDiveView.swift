@@ -185,10 +185,10 @@ struct NewDiveView: View {
     }
 }
 
-#Preview {
-    MainActor.assumeIsolated {
-        let container = previewContainer
-        return NewDiveView(/*dive: Dive.preview*/)
-                .modelContainer(container)
-    }
-}
+//#Preview {
+//    MainActor.assumeIsolated {
+//        let container = previewContainer
+//        return NewDiveView(/*dive: Dive.preview*/)
+//                .modelContainer(container)
+//    }
+//}

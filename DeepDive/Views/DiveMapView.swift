@@ -33,11 +33,7 @@ struct DiveMapView: View {
                                     .symbolEffect(.scale)
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(.white, .red)
-                                    
-                                
                             }
-                            
-                            
                         }
                     }
                 }
@@ -49,9 +45,9 @@ struct DiveMapView: View {
 
 
 
-#Preview {
-    MainActor.assumeIsolated {
-        DiveMapView()
-            .modelContainer(previewContainer)
-    }
-}
+//#Preview {
+//    MainActor.assumeIsolated {
+//        DiveMapView()
+//            .modelContainer(previewContainer)
+//    }
+//}

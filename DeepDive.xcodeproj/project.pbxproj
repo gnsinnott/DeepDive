@@ -34,6 +34,7 @@
 		72AEFCE82A3B9EC200DEA260 /* NewDiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AEFCE72A3B9EC200DEA260 /* NewDiveView.swift */; };
 		72B6E6132A5CBC3A000A4D54 /* TankImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B6E6122A5CBC3A000A4D54 /* TankImage.swift */; };
 		72C7F53B2A5DF74B0089B0A7 /* DiveLogTableCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72C7F53A2A5DF74B0089B0A7 /* DiveLogTableCard.swift */; };
+		72D1E9272A9563B4002B2342 /* DiveLocationEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D1E9262A9563B4002B2342 /* DiveLocationEntry.swift */; };
 		72D6D9B42A38D9BD00482547 /* PreviewSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72D6D9B32A38D9BD00482547 /* PreviewSampleData.swift */; };
 		72DB4F2A2A6EF030009A641F /* StampImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DB4F292A6EF030009A641F /* StampImageManager.swift */; };
 		72E6F75A2A8D372B0036EBFD /* NumberFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E6F7592A8D372B0036EBFD /* NumberFormatters.swift */; };
@@ -91,6 +92,7 @@
 		72AEFCE72A3B9EC200DEA260 /* NewDiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDiveView.swift; sourceTree = "<group>"; };
 		72B6E6122A5CBC3A000A4D54 /* TankImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankImage.swift; sourceTree = "<group>"; };
 		72C7F53A2A5DF74B0089B0A7 /* DiveLogTableCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLogTableCard.swift; sourceTree = "<group>"; };
+		72D1E9262A9563B4002B2342 /* DiveLocationEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveLocationEntry.swift; sourceTree = "<group>"; };
 		72D6D9B32A38D9BD00482547 /* PreviewSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSampleData.swift; sourceTree = "<group>"; };
 		72DB4F292A6EF030009A641F /* StampImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampImageManager.swift; sourceTree = "<group>"; };
 		72E6F7592A8D372B0036EBFD /* NumberFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatters.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				7230EDCA2A685A230053BB0B /* DiveNotesEntryView.swift */,
 				7294EC742A5F5947003007EA /* GearEntryTabView.swift */,
 				72044B812A44C317006BAEF3 /* SetDiveLocation.swift */,
+				72D1E9262A9563B4002B2342 /* DiveLocationEntry.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 		72D6D9B52A38D9C400482547 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				729EA1B12A67301D00410CCE /* KeyboardUtils.swift */,
 				72E6F7592A8D372B0036EBFD /* NumberFormatters.swift */,
 				72D6D9B32A38D9BD00482547 /* PreviewSampleData.swift */,
 				72DB4F292A6EF030009A641F /* StampImageManager.swift */,
@@ -219,7 +223,6 @@
 				7230EDC82A65BD790053BB0B /* DiveMapView.swift */,
 				721A76B22A4E2941001EC4DF /* DiveView.swift */,
 				723A0D142A6DB7BB0036C52E /* ImagePicker.swift */,
-				729EA1B12A67301D00410CCE /* KeyboardUtils.swift */,
 				72B6E6122A5CBC3A000A4D54 /* TankImage.swift */,
 				72F1FB702A4CC2B4001B143C /* ToggleStyles.swift */,
 				720F664E2A3A2450001B6446 /* UpdateDiveView.swift */,
@@ -385,6 +388,7 @@
 				72E6F75A2A8D372B0036EBFD /* NumberFormatters.swift in Sources */,
 				723A0D152A6DB7BB0036C52E /* ImagePicker.swift in Sources */,
 				72B6E6132A5CBC3A000A4D54 /* TankImage.swift in Sources */,
+				72D1E9272A9563B4002B2342 /* DiveLocationEntry.swift in Sources */,
 				72202B372A71C1C100DBE6E2 /* SettingsView.swift in Sources */,
 				721A76B32A4E2941001EC4DF /* DiveView.swift in Sources */,
 				729EA1B22A67301D00410CCE /* KeyboardUtils.swift in Sources */,

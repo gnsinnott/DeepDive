@@ -189,11 +189,11 @@ struct notesViewText: View {
         }
     }
 }
-
-#Preview {
-    MainActor.assumeIsolated {
-        let container = previewContainer
-        return DiveView(dive: Dive.preview)
-            .modelContainer(container)
-    }
-}
+//
+//#Preview {
+//    MainActor.assumeIsolated {
+//        let container = previewContainer
+//        return DiveView(dive: Dive.preview)
+//            .modelContainer(container)
+//    }
+//}

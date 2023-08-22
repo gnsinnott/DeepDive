@@ -14,11 +14,7 @@ struct SetDiveLocationView: View {
     
     @Binding public var longitude: Double
     @Binding public var latitude: Double
-    @State private var pinDropped: Bool = false
-    
-    @State private var position: MapCameraPosition = .automatic
-    @State private var visibleRegion: MKCoordinateRegion?
-    @State private var diveSite = Marker("Dive Name", coordinate: CLLocationCoordinate2D(latitude: 0, longitude: 10))
+    @State public var locationSet = false
     
     @Binding public var location: String
     @Binding public var boat: Bool
@@ -28,67 +24,20 @@ struct SetDiveLocationView: View {
     @Binding public var airTemp: Double
     @Binding public var tempUnit: Bool
     
+    @State private var showingSheet = false
+    
     var body: some View {
-        @State var newDiveSite = Marker(name, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
         Form {
             Text(name).font(.largeTitle)
             Section(header: Text("Dive Location")) {
-                ZStack {
-                    Map(position: $position){
-                        if pinDropped{
-                            diveSite
-                                .stroke(lineWidth: 30)
-                        }
-                    }
-                    .onMapCameraChange { context in
-                        visibleRegion = context.region
-                    }
-                    Image(systemName: "mappin").imageScale(.large)
-                }.frame(height: 300)
-                HStack {
-                    Button("Drop Pin") {
-                        latitude = visibleRegion?.center.latitude ?? 0.0
-                        longitude = visibleRegion?.center.longitude ?? 0.0
-                        diveSite = Marker(name, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
-                        print(latitude, longitude)
-                        pinDropped = true
-                    }
-                    Text("or set manually below")
+                Button("\(locationSet ? "Change Dive Location" : "Select Dive Location")") {
+                    locationSet = true
+                    showingSheet.toggle()
                 }
-                HStack{
-                    VStack{
-                        HStack {
-                            Text("Latitude")
-                                .foregroundStyle(.secondary)
-                            TextField("Latitude:", value:$latitude, format: .number)
-                                .keyboardType(.numbersAndPunctuation)
-                                .onChange(of: latitude) {oldValue, newValue in
-                                    if (newValue > 180 || newValue < -180) {
-                                        latitude = oldValue
-                                    }
-                                }
-                        }
-                        HStack {
-                            Text("Longitude")
-                                .foregroundStyle(.secondary)
-                            TextField("Longitude:", value:$longitude, format: .number)
-                                .keyboardType(.numbersAndPunctuation)
-                                .onChange(of: longitude) {oldValue, newValue in
-                                    if (newValue > 180 || newValue < -180) {
-                                        longitude = oldValue
-                                    }
-                                }
-                        }
-                    }
-                    Button("Set") {
-                        newDiveSite = Marker(name, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
-                        diveSite = newDiveSite
-                        print(latitude, longitude)
-                        pinDropped = true
-                    }
+                .sheet(isPresented: $showingSheet){
+                    DiveLocationEntry(name: name, longitude: $longitude, latitude: $latitude)
                 }
-                
-                Text("Dive Coordinates: \(latitude, specifier: "%.5f"), \(longitude, specifier: "%.5f")")
+                Text("\(String(format: "%.6f", latitude))˚\(latitude >= 0 ? "N" : "S"), \(String(format: "%.6f", longitude))˚\(longitude >= 0 ? "E" : "W")")
             }
             Section(header: Text("Location Details")) {
                 HStack{
@@ -137,3 +86,4 @@ struct SetDiveLocationView: View {
         }
     }
 }
+
