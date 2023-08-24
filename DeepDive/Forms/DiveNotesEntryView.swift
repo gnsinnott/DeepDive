@@ -28,22 +28,6 @@ struct DiveNotesEntryView: View {
                         self.note = ""
                     }
                 }
-//                .toolbar{
-//                    ToolbarItemGroup(placement: .keyboard){
-//                        Spacer()
-//                        Button() {
-//                            print("On Note Entry ")
-//                            print(note)
-//                            if note == "" {
-//                                print("Note is emtpy")
-//                                note = placeHolder
-//                            }
-//                            hideKeyboard()
-//                        } label: {
-//                            Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
-//                        }
-//                    }
-//                }
                 .padding(.horizontal)
             .navigationTitle("Dive Note")
         }

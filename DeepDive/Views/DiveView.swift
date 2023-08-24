@@ -21,22 +21,15 @@ struct DiveView: View {
                 Text(" \(dive.name)")
                     .font(.largeTitle)
                 TabView(selection: $index) {
-                    ForEach((0..<4), id: \.self) {index in
+                    ForEach((0..<3), id: \.self) {index in
                         if (index == 0){
-                            
                             VStack {
-                                diveOverviewCard(dive: dive)
                                 diveOverviewText(dive: dive)
+                                gearViewText(dive: dive)
                             }
                             
-                        } else if (index == 1){
-                            VStack{
-                                gearViewCard(dive: dive)
-                                gearViewText(dive: dive)
-                                Spacer()
-                            }
                         }
-                        else if (index == 2) {
+                        else if (index == 1) {
                             VStack{
                                 diveLocationView(dive: dive)
                                 diveLocationTextView(dive: dive)
@@ -149,6 +142,7 @@ struct diveLocationView: View {
             Marker(dive.name, systemImage: "flag" , coordinate: CLLocationCoordinate2D(latitude: dive.latitude, longitude: dive.longitude))
         }
         .frame(height: 350)
+        .padding()
     }
 }
 
@@ -157,10 +151,11 @@ struct diveLocationTextView: View {
     var body: some View {
         VStack{
             Text(dive.location)
-            Text("Location coordinates")
+            Text("\(String(format: "%.6f", dive.latitude))˚\(dive.latitude >= 0 ? "N" : "S"), \(String(format: "%.6f", dive.longitude))˚\(dive.longitude >= 0 ? "E" : "W")")
             Text(dive.boatDive ? "Boat Dive 🛥️" : "Shore Dive 🏝️")
             Text(dive.saltWater ? "Salt Water" : "Fresh Water")
-            Text(String(dive.airTemp) + (dive.airUnit ? " ˚C" : " ˚F"))
+            Text(String("Water: " + String(dive.waterTemp)) + (dive.tempUnit ? " ˚C" : " ˚F"))
+            Text(String("Air: " + String(dive.airTemp)) + (dive.tempUnit ? " ˚C" : " ˚F"))
         }
     }
 }
