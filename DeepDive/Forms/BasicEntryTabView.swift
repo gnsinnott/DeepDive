@@ -74,17 +74,17 @@ struct basicEntryTabView: View{
                 }
             }
         }
-        .toolbar{
-            ToolbarItemGroup(placement: .keyboard){
-                Spacer()
-                Button() {
-                    print("On Basic Entry ")
-                    hideKeyboard()
-                } label: {
-                    Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
-                }
-            }
-        }
+//        .toolbar{
+//            ToolbarItemGroup(placement: .keyboard){
+//                Spacer()
+//                Button() {
+//                    print("On Basic Entry ")
+//                    hideKeyboard()
+//                } label: {
+//                    Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
+//                }
+//            }
+//        }
     }
     
 }

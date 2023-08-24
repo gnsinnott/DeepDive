@@ -54,38 +54,49 @@ struct NewDiveView: View {
     
     @State var presentSubmitAlert = false
     
+    @State private var viewSelection: String = "Basic"
+    var viewOptions = ["Basic", "Gear", "Location", "Notes"]
+    var viewLogos = [Image(systemName: "ruler")]
     var body: some View {
         NavigationStack {
-            TabView {
-                basicEntryTabView(name: $name, date: $date, bottomTime: $bottomTime, depth: $depth, depthUnit: $depthUnit, visibility: $visibility, visibilityUnit: $visibilityUnit, diveType: $diveType, night: $night )
-                .tabItem {
-                    HStack {
-                        Image(systemName: "ruler")
-                        Text("Basic")
-                    }
+            Picker("Entry", selection: $viewSelection) {
+                ForEach(viewOptions, id: \.self) {
+                    Text($0) + Text(Image(systemName: "star"))
+                    
+                    
                 }
-                gearEntryTabView(airMix: $airMix, tankSize: $tankSize, tankSizeUnit: $tankSizeUnit, startPressure: $startPressure, endPressure: $endPressure, pressureUnit: $pressureUnit, weight: $weight, weightUnit: $weightUnit, suit: $suit)
-                .tabItem{
-                    HStack {
-                        Image(systemName: "backpack")
-                        Text("Gear")
-                    }
-                }
-                SetDiveLocationView(name: name, longitude: $longitude, latitude: $latitutde, location:$location, boat: $boatDive, saltWater: $saltWater, waterTemp: $waterTemp, airTemp: $airTemp, tempUnit: $tempUnit  )
-                .tabItem {
-                    HStack {
-                        Image(systemName: "mappin.and.ellipse")
-                        Text("Location")
-                    }
-                }
-                DiveNotesEntryView(id: id, note: $note, stampImage: $stampImage)
-                    .tabItem {
-                        HStack{
-                            Image(systemName: "doc.richtext")
-                            Text("Notes")
-                        }
-                    }
             }
+            
+//            TabView {
+//                basicEntryTabView(name: $name, date: $date, bottomTime: $bottomTime, depth: $depth, depthUnit: $depthUnit, visibility: $visibility, visibilityUnit: $visibilityUnit, diveType: $diveType, night: $night )
+//                .tabItem {
+//                    HStack {
+//                        Image(systemName: "ruler")
+//                        Text("Basic")
+//                    }
+//                }
+//                gearEntryTabView(airMix: $airMix, tankSize: $tankSize, tankSizeUnit: $tankSizeUnit, startPressure: $startPressure, endPressure: $endPressure, pressureUnit: $pressureUnit, weight: $weight, weightUnit: $weightUnit, suit: $suit)
+//                .tabItem{
+//                    HStack {
+//                        Image(systemName: "backpack")
+//                        Text("Gear")
+//                    }
+//                }
+//                SetDiveLocationView(name: name, longitude: $longitude, latitude: $latitutde, location:$location, boat: $boatDive, saltWater: $saltWater, waterTemp: $waterTemp, airTemp: $airTemp, tempUnit: $tempUnit  )
+//                .tabItem {
+//                    HStack {
+//                        Image(systemName: "mappin.and.ellipse")
+//                        Text("Location")
+//                    }
+//                }
+//                DiveNotesEntryView(id: id, note: $note, stampImage: $stampImage)
+//                    .tabItem {
+//                        HStack{
+//                            Image(systemName: "doc.richtext")
+//                            Text("Notes")
+//                        }
+//                    }
+//            }
             .pickerStyle(.segmented)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -115,18 +126,27 @@ struct NewDiveView: View {
                 }
             }
             .navigationTitle("New Dive Entry")
-        }
-        .toolbar{
-            ToolbarItemGroup(placement: .keyboard){
-                Spacer()
-                Button() {
-                    print("Main From")
-                    hideKeyboard()
-                } label: {
-                    Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
-                }
+            if viewSelection == viewOptions[0] {
+                basicEntryTabView(name: $name, date: $date, bottomTime: $bottomTime, depth: $depth, depthUnit: $depthUnit, visibility: $visibility, visibilityUnit: $visibilityUnit, diveType: $diveType, night: $night )
+            } else if viewSelection == viewOptions[1] {
+                gearEntryTabView(airMix: $airMix, tankSize: $tankSize, tankSizeUnit: $tankSizeUnit, startPressure: $startPressure, endPressure: $endPressure, pressureUnit: $pressureUnit, weight: $weight, weightUnit: $weightUnit, suit: $suit)
+            } else if viewSelection == viewOptions[2] {
+                SetDiveLocationView(name: name, longitude: $longitude, latitude: $latitutde, location:$location, boat: $boatDive, saltWater: $saltWater, waterTemp: $waterTemp, airTemp: $airTemp, tempUnit: $tempUnit  )
+            } else {
+                DiveNotesEntryView(id: id, note: $note, stampImage: $stampImage)
             }
         }
+//        .toolbar{
+//            ToolbarItemGroup(placement: .keyboard){
+//                Spacer()
+//                Button() {
+//                    print("Main From")
+//                    hideKeyboard()
+//                } label: {
+//                    Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
+//                }
+//            }
+//        }
         .pickerStyle(.segmented)
         .onAppear(){
             if (defaultUnit != nil){

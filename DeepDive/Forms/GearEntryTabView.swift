@@ -87,16 +87,16 @@ struct gearEntryTabView: View {
                 }
             }
         }
-        .toolbar{
-            ToolbarItemGroup(placement: .keyboard){
-                Spacer()
-                Button() {
-                    print("On Gear Entry ")
-                    hideKeyboard()
-                } label: {
-                    Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
-                }
-            }
-        }
+//        .toolbar{
+//            ToolbarItemGroup(placement: .keyboard){
+//                Spacer()
+//                Button() {
+//                    print("On Gear Entry ")
+//                    hideKeyboard()
+//                } label: {
+//                    Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
+//                }
+//            }
+//        }
     }
 }
