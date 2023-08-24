@@ -13,7 +13,6 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \Dive.date, order: .reverse) var dives: [Dive]
     
-    
     var body: some View {
         NavigationView {
             TabView {

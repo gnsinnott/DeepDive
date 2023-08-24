@@ -44,7 +44,6 @@ struct NewDiveView: View {
     @State private var waterTemp = 0.0
     @State private var tempUnit = true
     
-    
     @State private var location: String = ""
     @State private var longitude: Double = 0.0
     @State private var latitutde: Double = 0.0
@@ -61,9 +60,7 @@ struct NewDiveView: View {
         NavigationStack {
             Picker("Entry", selection: $viewSelection) {
                 ForEach(viewOptions, id: \.self) {
-                    Text($0) + Text(Image(systemName: "star"))
-                    
-                    
+                    Text($0)
                 }
             }
             .pickerStyle(.segmented)
@@ -94,6 +91,17 @@ struct NewDiveView: View {
                     
                 }
             }
+            .toolbar{
+                ToolbarItemGroup(placement: .keyboard){
+                    Spacer()
+                    Button() {
+                        print("Main Form")
+                        hideKeyboard()
+                    } label: {
+                        Label("Dismiss Keyboard", systemImage: "keyboard.chevron.compact.down")
+                    }
+                }
+            }
             .navigationTitle("New Dive Entry")
             if viewSelection == viewOptions[0] {
                 basicEntryTabView(name: $name, date: $date, bottomTime: $bottomTime, depth: $depth, depthUnit: $depthUnit, visibility: $visibility, visibilityUnit: $visibilityUnit, diveType: $diveType, night: $night )
@@ -114,10 +122,10 @@ struct NewDiveView: View {
                 pressureUnit = defaultUnit!
                 weightUnit = defaultUnit!
                 tempUnit = defaultUnit!
-                
             }
         }
     }
+    
     public func newDive() {
         let newDive = Dive(id: id, number: diveNumber , name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, longitude: longitude, latitude: latitutde, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix, tankSize: tankSize, tankSizeUnit: tankSizeUnit, visibility: visibility, visibilityUnit: visibilityUnit, diveType: diveType, night: night, boatDive: boatDive, saltWater: saltWater, airTemp: airTemp, waterTemp: waterTemp, tempUnit: tempUnit, weight: weight, weightUnit: weightUnit, note: note)
         modelContext.insert(newDive)

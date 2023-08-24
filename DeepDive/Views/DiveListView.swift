@@ -33,7 +33,6 @@ struct diveListView: View {
             }
             .navigationTitle("Your Dives")
         }
-        
         .searchable(text: $searchText)
     }
     

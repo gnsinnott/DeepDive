@@ -80,7 +80,6 @@ struct diveOverviewText: View {
                 Text("End: \(dive.endPressure) " + pressureUnitText)
             }
         }
-        
     }
 }
 
@@ -140,7 +139,7 @@ struct notesViewText: View {
         }
     }
 }
-//
+
 //#Preview {
 //    MainActor.assumeIsolated {
 //        let container = previewContainer

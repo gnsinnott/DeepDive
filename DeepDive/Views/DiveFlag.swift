@@ -19,7 +19,6 @@ struct DiveFlag: View {
                 .fill(.white)
                 .frame(width: sqrt(pow(width,2)+pow(height,2)), height: (height * 0.25))
                 .rotationEffect(.degrees(30))
-                
         }
         .frame(width: width, height: height)
         .clipShape(Rectangle())

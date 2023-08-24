@@ -17,7 +17,6 @@ struct DiveNotesEntryView: View {
     @StateObject private var imagePicker = ImagePicker()
     
     var body: some View {
-       
         NavigationStack{
             PhotoPickerView(id: id.uuidString)
             TextEditor(text: $note)

@@ -44,23 +44,25 @@ struct gearEntryTabView: View {
                     HStack {
                         VStack {
                             HStack{
-                                Text("Starting Pressure:")
+                                Text("Pressure")
+                                Picker("", selection: $pressureUnit) {
+                                    Text("bar").tag(true)
+                                    Text("psi").tag(false)
+                                }
+                            }
+                            HStack{
+                                Text("Start:")
                                     .foregroundStyle(.secondary)
                                 TextField("", value: $startPressure, formatter: Formatter.blankZeroFormat)
                                     .keyboardType(.numberPad)
                             }
                             HStack{
-                                Text("Ending Pressure:")
+                                Text("End:")
                                     .foregroundStyle(.secondary)
                                 TextField("", value: $endPressure, formatter: Formatter.blankZeroFormat)
                                     .keyboardType(.numberPad)
                             }
-                            
-                        }
-                        Picker("", selection: $pressureUnit) {
-                            Text("bar").tag(true)
-                            Text("psi").tag(false)
-                        }
+                        }   
                     }
                 }
             }

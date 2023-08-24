@@ -21,7 +21,6 @@ struct basicEntryTabView: View{
     
     // TODO: Surface Interval - amount of time since last dive
     
-    
     var body: some View {
         Form {
             Section(header: Text("Dive name")) {
