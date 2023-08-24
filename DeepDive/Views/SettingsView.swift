@@ -24,7 +24,7 @@ struct SettingsView: View {
                 Picker("Default Unit", selection: $defaultUnit) {
                     Text("meters").tag(true)
                     Text("feet").tag(false)
-                        }
+                }
                 .pickerStyle(.segmented)
                 Text("Next Dive Number: \(diveNumber)")
                 Button("Change Dive Number"){
@@ -49,7 +49,7 @@ struct SettingsView: View {
         }
     }
 }
-    
+
 
 
 #Preview {

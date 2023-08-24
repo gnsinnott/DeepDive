@@ -16,37 +16,20 @@ struct DiveView: View {
     @State var index = 0
     var dive: Dive
     var body: some View {
-        Group {
-            VStack{
-                Text(" \(dive.name)")
-                    .font(.largeTitle)
-                TabView(selection: $index) {
-                    ForEach((0..<3), id: \.self) {index in
-                        if (index == 0){
-                            VStack {
-                                diveOverviewText(dive: dive)
-                                gearViewText(dive: dive)
-                            }
-                            
-                        }
-                        else if (index == 1) {
-                            VStack{
-                                diveLocationView(dive: dive)
-                                diveLocationTextView(dive: dive)
-                            }
-                        }
-                        else {
-                            VStack{
-                                notesView(dive: dive)
-                                notesViewText(dive: dive)
-                            }
-                        }
-                    }
-                }
-                .tabViewStyle(.page)
-                .indexViewStyle(.page(backgroundDisplayMode: .always))
-            }
+        ScrollView {
+            Text("Details")
+                .font(.headline)
+            diveOverviewText(dive: dive)
+            Text("Location")
+                .font(.headline)
+            diveLocationView(dive: dive)
+            diveLocationTextView(dive: dive)
+            Text("Notes")
+                .font(.headline)
+            notesView(dive: dive)
+            notesViewText(dive: dive)
         }
+        .navigationTitle(dive.name)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(role: .destructive) {
@@ -69,19 +52,12 @@ struct DiveView: View {
     }
 }
 
-struct diveOverviewCard: View {
-    var dive: Dive
-    var body: some View {
-        Rectangle()
-            .fill(Color.blue)
-            .frame(height: 350)
-            .padding()
-    }
-}
-
 struct diveOverviewText: View {
     var dive: Dive
     var body: some View {
+        let weightUnitText = (dive.weightUnit) ? "kgs" : "lbs"
+        let tankSizeUnitText = (dive.tankSizeUnit) ? "liters" : "cu ft"
+        let pressureUnitText = (dive.airUnit) ? "bar" : "psi"
         ScrollView {
             VStack{
                 HStack{
@@ -94,44 +70,17 @@ struct diveOverviewText: View {
                 Text("Bottom Time: \(dive.bottomTime) minutes")
                 Text("Depth: \(dive.depth) \(dive.depthUnit ? "m" : "ft")" )
                 Text("Visibility: \(dive.visibility) \(dive.visibilityUnit ? "m" : "ft")")
-            }
-        }
-        
-    }
-}
-
-struct gearViewCard: View {
-    var dive: Dive
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color.blue)
-                .frame(height: 350)
-                .padding()
-            HStack(spacing: 60) {
-                TankImage(start: dive.startPressure, end: dive.endPressure, airType: Dive.airMixFromId(airmix: dive.airMix), tankSize: dive.tankSize, tankSizeUnit: dive.tankSizeUnit)
-                WeightImage(weight: dive.weight, unit: dive.weightUnit)
-            }
-        }
-    }
-}
-
-struct gearViewText: View {
-    var dive: Dive
-    var body: some View {
-        let weightUnitText = (dive.weightUnit) ? "kgs" : "lbs"
-        let tankSizeUnitText = (dive.tankSizeUnit) ? "liters" : "cu ft"
-        let pressureUnitText = (dive.airUnit) ? "bar" : "psi"
-        ScrollView {
-            VStack{
+                Spacer()
+                Text("Gear")
+                    .font(.headline)
                 Text("Tank Mix: \(Dive.airMixFromId(airmix: dive.airMix))")
                 Text("Tank Size: \(dive.tankSize) " + tankSizeUnitText)
                 Text("Weight: \(dive.weight) " + weightUnitText)
                 Text("Start: \(dive.startPressure) " + pressureUnitText)
                 Text("End: \(dive.endPressure) " + pressureUnitText)
-                
             }
         }
+        
     }
 }
 
@@ -139,7 +88,13 @@ struct diveLocationView: View {
     var dive: Dive
     var body: some View {
         Map(){
-            Marker(dive.name, systemImage: "flag" , coordinate: CLLocationCoordinate2D(latitude: dive.latitude, longitude: dive.longitude))
+            Annotation(dive.name, coordinate: CLLocationCoordinate2D(latitude: dive.latitude, longitude: dive.longitude)){
+                Image(systemName: "flag.slash.fill")
+                    .symbolEffect(.scale)
+                    .symbolRenderingMode(.palette)
+                    .foregroundStyle(.white, .red)
+                    .tint(.gray)
+            }
         }
         .frame(height: 350)
         .padding()
@@ -156,6 +111,7 @@ struct diveLocationTextView: View {
             Text(dive.saltWater ? "Salt Water" : "Fresh Water")
             Text(String("Water: " + String(dive.waterTemp)) + (dive.tempUnit ? " ˚C" : " ˚F"))
             Text(String("Air: " + String(dive.airTemp)) + (dive.tempUnit ? " ˚C" : " ˚F"))
+            Spacer()
         }
     }
 }

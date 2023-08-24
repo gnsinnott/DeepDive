@@ -27,7 +27,7 @@ struct DiveLogTableCard: View {
                     Text("34m")
                     Rectangle() // _
                         .frame(width: (width-2*thickness)*2, height: thickness)
-                    .padding(.top, (height*2-thickness*2))
+                        .padding(.top, (height*2-thickness*2))
                     
                 }
                 Rectangle() // |

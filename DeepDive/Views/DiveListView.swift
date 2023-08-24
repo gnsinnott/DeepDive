@@ -29,7 +29,7 @@ struct diveListView: View {
                 NavigationLink(
                     destination: NewDiveView(), label: {
                         Label("New Dive", systemImage: "plus")
-            })
+                    })
             }
             .navigationTitle("Your Dives")
         }
