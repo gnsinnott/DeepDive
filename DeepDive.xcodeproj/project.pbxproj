@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		72044B822A44C317006BAEF3 /* SetDiveLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72044B812A44C317006BAEF3 /* SetDiveLocation.swift */; };
 		720F66492A3909BC001B6446 /* SampleDives.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F66482A3909BC001B6446 /* SampleDives.swift */; };
-		720F664F2A3A2450001B6446 /* UpdateDiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720F664E2A3A2450001B6446 /* UpdateDiveView.swift */; };
 		721A76B32A4E2941001EC4DF /* DiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721A76B22A4E2941001EC4DF /* DiveView.swift */; };
 		72202B372A71C1C100DBE6E2 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72202B362A71C1C100DBE6E2 /* SettingsView.swift */; };
 		7230EDC92A65BD790053BB0B /* DiveMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7230EDC82A65BD790053BB0B /* DiveMapView.swift */; };
@@ -26,6 +25,7 @@
 		724608242A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608232A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift */; };
 		724608312A338A18005EAC46 /* Dive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608302A338A18005EAC46 /* Dive.swift */; };
 		724608332A338C95005EAC46 /* DiveCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724608322A338C95005EAC46 /* DiveCard.swift */; };
+		72692A8D2A99409300AEFA83 /* EditDiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72692A8C2A99409300AEFA83 /* EditDiveView.swift */; };
 		7277A28D2A72DCB000985FC5 /* WeightImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7277A28C2A72DCB000985FC5 /* WeightImage.swift */; };
 		7294EC752A5F5947003007EA /* GearEntryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7294EC742A5F5947003007EA /* GearEntryTabView.swift */; };
 		729912EA2A686DE2001A19D6 /* DiveFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729912E92A686DE2001A19D6 /* DiveFlag.swift */; };
@@ -62,7 +62,6 @@
 /* Begin PBXFileReference section */
 		72044B812A44C317006BAEF3 /* SetDiveLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDiveLocation.swift; sourceTree = "<group>"; };
 		720F66482A3909BC001B6446 /* SampleDives.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleDives.swift; sourceTree = "<group>"; };
-		720F664E2A3A2450001B6446 /* UpdateDiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDiveView.swift; sourceTree = "<group>"; };
 		721A76B22A4E2941001EC4DF /* DiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveView.swift; sourceTree = "<group>"; };
 		72202B362A71C1C100DBE6E2 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		7230EDC82A65BD790053BB0B /* DiveMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveMapView.swift; sourceTree = "<group>"; };
@@ -84,6 +83,7 @@
 		724608232A338A04005EAC46 /* DeepDiveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepDiveUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		724608302A338A18005EAC46 /* Dive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dive.swift; sourceTree = "<group>"; };
 		724608322A338C95005EAC46 /* DiveCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCard.swift; sourceTree = "<group>"; };
+		72692A8C2A99409300AEFA83 /* EditDiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDiveView.swift; sourceTree = "<group>"; };
 		7277A28C2A72DCB000985FC5 /* WeightImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightImage.swift; sourceTree = "<group>"; };
 		7294EC742A5F5947003007EA /* GearEntryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearEntryTabView.swift; sourceTree = "<group>"; };
 		729912E92A686DE2001A19D6 /* DiveFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveFlag.swift; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 				723A0D142A6DB7BB0036C52E /* ImagePicker.swift */,
 				72B6E6122A5CBC3A000A4D54 /* TankImage.swift */,
 				72F1FB702A4CC2B4001B143C /* ToggleStyles.swift */,
-				720F664E2A3A2450001B6446 /* UpdateDiveView.swift */,
+				72692A8C2A99409300AEFA83 /* EditDiveView.swift */,
 				7277A28C2A72DCB000985FC5 /* WeightImage.swift */,
 			);
 			path = Views;
@@ -382,9 +382,9 @@
 				724608312A338A18005EAC46 /* Dive.swift in Sources */,
 				72D6D9B42A38D9BD00482547 /* PreviewSampleData.swift in Sources */,
 				7246080C2A338A04005EAC46 /* Item.swift in Sources */,
-				720F664F2A3A2450001B6446 /* UpdateDiveView.swift in Sources */,
 				72F1FB712A4CC2B4001B143C /* ToggleStyles.swift in Sources */,
 				729924772A6F03E200F504CA /* DiveGraph.swift in Sources */,
+				72692A8D2A99409300AEFA83 /* EditDiveView.swift in Sources */,
 				72E6F75A2A8D372B0036EBFD /* NumberFormatters.swift in Sources */,
 				723A0D152A6DB7BB0036C52E /* ImagePicker.swift in Sources */,
 				72B6E6132A5CBC3A000A4D54 /* TankImage.swift in Sources */,

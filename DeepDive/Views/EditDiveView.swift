@@ -1,22 +1,19 @@
 //
-//  NewDiveView.swift
+//  EditDiveView.swift
 //  DeepDive
 //
-//  Created by Gregory Sinnott on 6/15/23.
+//  Created by Gregory Sinnott on 8/25/23.
 //
 
 import SwiftUI
-import SwiftData
-import MapKit
 
-struct NewDiveView: View {
-    
-    @AppStorage("diveNumber") var diveNumber = 1
+struct EditDiveView: View {
+    var dive: Dive
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
-    @AppStorage("defaultUnit") var defaultUnit: Bool?
-    let id = UUID()
+
+    @State private var id: UUID?
     
     @State private var name: String = ""
     @State private var date: Date = Date()
@@ -65,11 +62,11 @@ struct NewDiveView: View {
             .pickerStyle(.segmented)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Submit") {
+                    Button("Save") {
                         let empty = notEntered()
                         if empty.isEmpty{
                             print("Submit pressed")
-                            newDive()
+                            updateDive()
                             dismiss()
                         }
                         else {
@@ -79,7 +76,7 @@ struct NewDiveView: View {
                     }
                     .alert("Dive details missing", isPresented: $presentSubmitAlert, actions: {
                         Button("Submit", action: {
-                            newDive()
+                            updateDive()
                             dismiss()
                         })
                         Button("Cancel", role: .cancel, action: {})
@@ -108,28 +105,76 @@ struct NewDiveView: View {
             } else if viewSelection == viewOptions[2] {
                 SetDiveLocationView(name: name, longitude: $longitude, latitude: $latitude, location:$location, boat: $boatDive, saltWater: $saltWater, waterTemp: $waterTemp, airTemp: $airTemp, tempUnit: $tempUnit  )
             } else {
-                DiveNotesEntryView(id: id, note: $note)
+               let data = try? Data(contentsOf: getDocumentsDirectory().appendingPathComponent(dive.id.uuidString))
+                if (data != nil){
+                    DiveNotesEntryView(id: id!, note: $note, stampImage: Image(uiImage: UIImage(data: data!)!))
+                } else {
+                    DiveNotesEntryView(id: id!, note: $note)
+                }
+                
             }
         }
         .pickerStyle(.segmented)
         .onAppear(){
-            if (defaultUnit != nil){
-                depthUnit = defaultUnit!
-                visibilityUnit = defaultUnit!
-                tankSizeUnit = defaultUnit!
-                pressureUnit = defaultUnit!
-                weightUnit = defaultUnit!
-                tempUnit = defaultUnit!
-            }
+            id = dive.id
+            name = dive.name
+            date = dive.date
+            bottomTime = dive.bottomTime
+            depth = dive.depth
+            depthUnit = dive.depthUnit //true = m, false = ft
+            visibility = dive.visibility
+            visibilityUnit = dive.visibilityUnit //true = m, false = ft
+            diveType = dive.diveType
+            night = dive.night
+            airMix = dive.airMix
+            tankSize = dive.tankSize
+            tankSizeUnit = dive.tankSizeUnit
+            startPressure = dive.startPressure
+            endPressure = dive.endPressure
+            pressureUnit = dive.airUnit
+            weight = dive.weight
+            weightUnit = dive.weightUnit
+            suit = dive.suit
+            boatDive = dive.boatDive
+            saltWater = dive.saltWater
+            airTemp = dive.airTemp
+            waterTemp = dive.waterTemp
+            tempUnit = dive.tempUnit
+            location = dive.location
+            longitude = dive.longitude
+            latitude = dive.latitude
         }
     }
     
-    public func newDive() {
-        let newDive = Dive(id: id, number: diveNumber , name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, longitude: longitude, latitude: latitude, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix, tankSize: tankSize, tankSizeUnit: tankSizeUnit, visibility: visibility, visibilityUnit: visibilityUnit, diveType: diveType, night: night, boatDive: boatDive, saltWater: saltWater, airTemp: airTemp, waterTemp: waterTemp, tempUnit: tempUnit, weight: weight, weightUnit: weightUnit, suit: suit, note: note)
-        modelContext.insert(newDive)
-        diveNumber += 1
+    public func updateDive() {
+        dive.name = name
+        dive.date = date
+        dive.bottomTime = bottomTime
+        dive.depth = depth
+        dive.depthUnit = depthUnit
+        dive.visibility = visibility
+        dive.visibilityUnit = visibilityUnit
+        dive.diveType = diveType
+        dive.night = night
+        dive.airMix = airMix
+        dive.tankSize = tankSize
+        dive.tankSizeUnit = tankSizeUnit
+        dive.startPressure = startPressure
+        dive.endPressure = endPressure
+        dive.airUnit = pressureUnit
+        dive.weight = weight
+        dive.weightUnit = weightUnit
+        dive.suit = suit 
+        dive.boatDive = boatDive
+        dive.saltWater = saltWater
+        dive.airTemp = airTemp
+        dive.waterTemp = waterTemp
+        dive.tempUnit = tempUnit
+        dive.location = location
+        dive.longitude = longitude
+        dive.latitude = latitude
+        dive.note = note
         print("New Dive Entry")
-        print("New dive number \(diveNumber)")
     }
     
     public func notEntered() -> String{
@@ -169,9 +214,5 @@ struct NewDiveView: View {
 }
 
 //#Preview {
-//    MainActor.assumeIsolated {
-//        let container = previewContainer
-//        return NewDiveView(/*dive: Dive.preview*/)
-//                .modelContainer(container)
-//    }
+//    EditDiveView()
 //}

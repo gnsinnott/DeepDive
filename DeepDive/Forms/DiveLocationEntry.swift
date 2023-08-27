@@ -95,7 +95,6 @@ struct DiveLocationEntry: View {
             }
         }
         Button("Set Location", action: {
-            print(latitude, longitude)
             dismiss()
         })
     }

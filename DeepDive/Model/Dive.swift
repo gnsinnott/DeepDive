@@ -41,9 +41,10 @@ class Dive {
     var tempUnit: Bool
     var weight: Int
     var weightUnit: Bool
+    var suit: Int
     var note: String
     
-    init(id: UUID, number: Int, name: String, date: Date, bottomTime: Int, depth: Int, depthUnit: Bool, location: String, longitude: Double, latitude: Double, startPressure: Int, endPressure: Int, airUnit: Bool, airMix: AirMix, tankSize: Int, tankSizeUnit: Bool, visibility: Int, visibilityUnit: Bool, diveType: DiveType, night: Bool, boatDive: Bool, saltWater: Bool, airTemp: Double, waterTemp: Double, tempUnit: Bool, weight: Int, weightUnit: Bool, note: String){
+    init(id: UUID, number: Int, name: String, date: Date, bottomTime: Int, depth: Int, depthUnit: Bool, location: String, longitude: Double, latitude: Double, startPressure: Int, endPressure: Int, airUnit: Bool, airMix: AirMix, tankSize: Int, tankSizeUnit: Bool, visibility: Int, visibilityUnit: Bool, diveType: DiveType, night: Bool, boatDive: Bool, saltWater: Bool, airTemp: Double, waterTemp: Double, tempUnit: Bool, weight: Int, weightUnit: Bool, suit: Int, note: String){
         self.id = id
         self.number = number
         self.name = name
@@ -71,6 +72,7 @@ class Dive {
         self.tempUnit = tempUnit
         self.weight = weight
         self.weightUnit = weightUnit
+        self.suit = suit
         self.note = note
 //        self.stampImage = stampImage
     }
@@ -80,11 +82,11 @@ extension Dive: Identifiable { }
 
 extension Dive {
     static var preview: Dive {
-        Dive(id: UUID(), number: 1, name: "Test Dive", date: Date(), bottomTime: 14, depth: 12, depthUnit: false, location: "Nowhere", longitude: 12.0, latitude: 3.0, startPressure: 3000, endPressure: 1000, airUnit: false, airMix: AirMix.Air, tankSize: 12, tankSizeUnit: true, visibility: 40, visibilityUnit: false, diveType: DiveType.Drift, night: false, boatDive: true, saltWater: true, airTemp: 90, waterTemp: 83, tempUnit: false, weight: 10, weightUnit: false, note: "Fun dive, got eaten by a shark.")
+        Dive(id: UUID(), number: 1, name: "Test Dive", date: Date(), bottomTime: 14, depth: 12, depthUnit: false, location: "Nowhere", longitude: 12.0, latitude: 3.0, startPressure: 3000, endPressure: 1000, airUnit: false, airMix: AirMix.Air, tankSize: 12, tankSizeUnit: true, visibility: 40, visibilityUnit: false, diveType: DiveType.Drift, night: false, boatDive: true, saltWater: true, airTemp: 90, waterTemp: 83, tempUnit: false, weight: 10, weightUnit: false, suit: 3, note: "Fun dive, got eaten by a shark.")
     }
     
     static func emptyDive() -> Dive {
-        Dive(id: UUID(), number: 0, name: "", date: Date(), bottomTime: 0, depth: 0, depthUnit: true, location: "", longitude: 0.0, latitude: 0.0, startPressure: 0, endPressure: 0, airUnit: true, airMix: AirMix.Air, tankSize: 0, tankSizeUnit: true, visibility: 0, visibilityUnit: true, diveType: DiveType.Deep, night: false, boatDive: true, saltWater: true, airTemp: 32.5, waterTemp: 28, tempUnit: true, weight: 0, weightUnit: true, note: "")
+        Dive(id: UUID(), number: 0, name: "", date: Date(), bottomTime: 0, depth: 0, depthUnit: true, location: "", longitude: 0.0, latitude: 0.0, startPressure: 0, endPressure: 0, airUnit: true, airMix: AirMix.Air, tankSize: 0, tankSizeUnit: true, visibility: 0, visibilityUnit: true, diveType: DiveType.Deep, night: false, boatDive: true, saltWater: true, airTemp: 32.5, waterTemp: 28, tempUnit: true, weight: 0, weightUnit: true, suit: 4, note: "")
     }
     
     enum AirMix: Int, Codable, CaseIterable, Identifiable {

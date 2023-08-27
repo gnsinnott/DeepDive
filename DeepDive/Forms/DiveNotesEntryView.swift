@@ -12,13 +12,17 @@ struct DiveNotesEntryView: View {
     var placeHolder = "Write a note about your dive."
     var id: UUID
     @Binding public var note: String
-    @Binding public var stampImage: Image?
+    @State public var stampImage: Image?
     
     @StateObject private var imagePicker = ImagePicker()
     
     var body: some View {
         NavigationStack{
-            PhotoPickerView(id: id.uuidString)
+            if stampImage != nil {
+                PhotoPickerView(stampImage: stampImage, id: id.uuidString)
+            } else {
+                PhotoPickerView(id: id.uuidString)
+            }
             TextEditor(text: $note)
                 .border(.teal)
                 .foregroundColor(self.note == placeHolder ? .gray : .primary)
@@ -59,6 +63,7 @@ struct PhotoPickerView: View {
                     if let uiImage = UIImage(data: data) {
                         self.stampImage = Image(uiImage: uiImage)
                         saveStampImage(stamp: uiImage, id: id)
+                        print("Image Saved")
                         return
                     }
                 }

@@ -44,7 +44,7 @@ struct gearEntryTabView: View {
                     HStack {
                         VStack {
                             HStack{
-                                Text("Pressure")
+//                                Text("Pressure")
                                 Picker("", selection: $pressureUnit) {
                                     Text("bar").tag(true)
                                     Text("psi").tag(false)
@@ -62,7 +62,7 @@ struct gearEntryTabView: View {
                                 TextField("", value: $endPressure, formatter: Formatter.blankZeroFormat)
                                     .keyboardType(.numberPad)
                             }
-                        }   
+                        }
                     }
                 }
             }
