@@ -54,6 +54,7 @@ struct NewDiveView: View {
     @State var presentSubmitAlert = false
     
     @State private var viewSelection: String = "Basic"
+    
     var viewOptions = ["Basic", "Gear", "Location", "Notes"]
     var body: some View {
         NavigationStack {
@@ -63,6 +64,9 @@ struct NewDiveView: View {
                 }
             }
             .pickerStyle(.segmented)
+            .onAppear {
+                UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(.teal)
+                }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Submit") {
@@ -123,8 +127,10 @@ struct NewDiveView: View {
             }
         }
     }
-    
     public func newDive() {
+        if (note == "Write a note about your dive.") {
+            note = ""
+        }
         let newDive = Dive(id: id, number: diveNumber , name: name, date: date, bottomTime: bottomTime, depth: depth, depthUnit: depthUnit, location: location, longitude: longitude, latitude: latitude, startPressure: startPressure, endPressure: endPressure, airUnit: pressureUnit, airMix: airMix, tankSize: tankSize, tankSizeUnit: tankSizeUnit, visibility: visibility, visibilityUnit: visibilityUnit, diveType: diveType, night: night, boatDive: boatDive, saltWater: saltWater, airTemp: airTemp, waterTemp: waterTemp, tempUnit: tempUnit, weight: weight, weightUnit: weightUnit, suit: suit, note: note)
         modelContext.insert(newDive)
         diveNumber += 1

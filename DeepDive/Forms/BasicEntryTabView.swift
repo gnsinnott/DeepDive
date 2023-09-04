@@ -39,7 +39,7 @@ struct basicEntryTabView: View{
                 HStack {
                     Text("Depth:")
                         .foregroundStyle(.secondary)
-                    TextField("", value: $depth, formatter: Formatter.blankZeroFormat)
+                    TextField("0", value: $depth, formatter: Formatter.blankZeroFormat)
                         .keyboardType(.numberPad)
                     
                     Picker("", selection: $depthUnit) {
@@ -50,7 +50,7 @@ struct basicEntryTabView: View{
                 HStack {
                     Text("Bottom Time:")
                         .foregroundStyle(.secondary)
-                    TextField("", value: $bottomTime, formatter: Formatter.blankZeroFormat)
+                    TextField("0", value: $bottomTime, formatter: Formatter.blankZeroFormat)
                         .keyboardType(.numberPad)
                     Text("minutes")
                         .foregroundStyle(.secondary)
@@ -58,7 +58,7 @@ struct basicEntryTabView: View{
                 HStack{
                     Text("Visbility:")
                         .foregroundStyle(.secondary)
-                    TextField("", value: $visibility, formatter: Formatter.blankZeroFormat)
+                    TextField("0", value: $visibility, formatter: Formatter.blankZeroFormat)
                         .keyboardType(.numberPad)
                     Picker("", selection: $visibilityUnit) {
                         Text("meters").tag(true)

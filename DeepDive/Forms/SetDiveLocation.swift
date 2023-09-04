@@ -43,7 +43,7 @@ struct SetDiveLocationView: View {
                 HStack{
                     Text("Location Name:")
                         .foregroundStyle(.secondary)
-                    TextField("", text: $location)
+                    TextField("location", text: $location)
                 }
                 Toggle(boat ? "Boat Dive 🛥️" : "Shore Dive 🏝️", isOn: $boat)
                     .tint(Color.blue)
@@ -56,13 +56,13 @@ struct SetDiveLocationView: View {
                         HStack{
                             Text("Air")
                                 .foregroundStyle(.secondary)
-                            TextField("", value: $airTemp, formatter: Formatter.blankZeroFormat)
+                            TextField("0", value: $airTemp, formatter: Formatter.blankZeroFormat)
                                 .keyboardType(.decimalPad)
                         }
                         HStack{
                             Text("Water")
                                 .foregroundStyle(.secondary)
-                            TextField("", value: $waterTemp, formatter: Formatter.blankZeroFormat)
+                            TextField("0", value: $waterTemp, formatter: Formatter.blankZeroFormat)
                                 .keyboardType(.decimalPad)
                         }
                     }

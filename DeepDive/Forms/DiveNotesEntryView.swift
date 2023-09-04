@@ -32,7 +32,7 @@ struct DiveNotesEntryView: View {
                     }
                 }
                 .padding(.horizontal)
-            .navigationTitle("Dive Note")
+                .navigationTitle("Dive Note")
         }
         .onAppear(){
             if (note == "") {

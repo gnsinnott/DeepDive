@@ -34,7 +34,7 @@ struct gearEntryTabView: View {
                     HStack{
                         Text("Tank Size:")
                             .foregroundStyle(.secondary)
-                        TextField("", value: $tankSize, formatter: Formatter.blankZeroFormat)
+                        TextField("0", value: $tankSize, formatter: Formatter.blankZeroFormat)
                             .keyboardType(.numberPad)
                         Picker("", selection: $tankSizeUnit) {
                             Text("liters").tag(true)
@@ -53,13 +53,13 @@ struct gearEntryTabView: View {
                             HStack{
                                 Text("Start:")
                                     .foregroundStyle(.secondary)
-                                TextField("", value: $startPressure, formatter: Formatter.blankZeroFormat)
+                                TextField("0", value: $startPressure, formatter: Formatter.blankZeroFormat)
                                     .keyboardType(.numberPad)
                             }
                             HStack{
                                 Text("End:")
                                     .foregroundStyle(.secondary)
-                                TextField("", value: $endPressure, formatter: Formatter.blankZeroFormat)
+                                TextField("0", value: $endPressure, formatter: Formatter.blankZeroFormat)
                                     .keyboardType(.numberPad)
                             }
                         }
@@ -71,7 +71,7 @@ struct gearEntryTabView: View {
                     HStack{
                         Text("Weights: ")
                             .foregroundStyle(.secondary)
-                        TextField("", value: $weight, formatter: Formatter.blankZeroFormat)
+                        TextField("0", value: $weight, formatter: Formatter.blankZeroFormat)
                             .keyboardType(.decimalPad)
                         Picker("", selection: $weightUnit) {
                             Text("kg").tag(true)
@@ -81,7 +81,7 @@ struct gearEntryTabView: View {
                     HStack{
                         Text("Suit thickness")
                             .foregroundStyle(.secondary)
-                        TextField("", value: $suit, formatter: Formatter.blankZeroFormat)
+                        TextField("0", value: $suit, formatter: Formatter.blankZeroFormat)
                             .keyboardType(.numberPad)
                         Text("mm")
                             .foregroundStyle(.secondary)
